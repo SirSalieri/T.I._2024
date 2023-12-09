@@ -349,71 +349,12 @@ footer {
                 <label for="repeat-password">Repeat your password:</label>
                 <input type="password" id="repeat-password" name="repeat-password" placeholder="Repeat Password">
         
-                <button id="register-button" type="submit">SIGN UP</button>
+                <button id="register-button"><a href="logged-in.html">SIGN UP</a></button>
             </form>
         </div>
         
     <div id="error-popup" class="error-popup"></div>
-      <script>
-         document.addEventListener('DOMContentLoaded', function() {
-        const loginContainer = document.querySelector('.login-container');
-        const registrationContainer = document.querySelector('.registration-container');
-        const registerLink = document.getElementById('register-link');
-        const loginForm = document.getElementById('login-form');
-        const registrationForm = document.getElementById('registration-form');
-        const errorPopup = document.getElementById('error-popup');
-
-        function toggleForms(event) {
-            event.preventDefault();
-            if (loginContainer.style.display === 'block') {
-                loginContainer.style.display = 'none';
-                registrationContainer.style.display = 'block';
-            } else {
-                loginContainer.style.display = 'block';
-                registrationContainer.style.display = 'none';
-            }
-            errorPopup.style.display = 'none'; // Clear any previous error messages when toggling forms
-            errorPopup.textContent = '';
-        }
-
-        registerLink.addEventListener('click', toggleForms);
-
-        // Function to handle form submissions
-        function handleFormSubmit(event, formType) {
-            event.preventDefault();
-            const formData = new FormData(formType);
-            const endpoint = formType === loginForm ? 'login.php' : 'register.php'; // Adjust the endpoints as needed
-            fetch(endpoint, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    if (formType === loginForm) {
-                        window.location.href = 'dashboard.html';
-                    } else {
-                        alert('Registration successful!');
-                        // Redirect or perform other actions after successful registration
-                    }
-                } else {
-                    showErrorPopup(data.message); // Display error message from the server
-                }
-            })
-            .catch(error => {
-                showErrorPopup('An error occurred. Please try again.'); // Display a generic error
-            });
-        }
-
-        loginForm.addEventListener('submit', event => handleFormSubmit(event, loginForm));
-        registrationForm.addEventListener('submit', event => handleFormSubmit(event, registrationForm));
-
-        function showErrorPopup(message) {
-            errorPopup.textContent = message;
-            errorPopup.style.display = 'block';
-        }
-    });
-
+        <script>
         </script>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

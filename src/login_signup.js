@@ -6,6 +6,7 @@
     const registrationForm = document.getElementById('registration-form');
     const errorPopup = document.getElementById('error-popup');
 
+
     // Function to toggle between login and registration forms
     function toggleForms(event) {
         event.preventDefault();
@@ -38,7 +39,7 @@
         .then(data => {
             if (data.success) {
                 // Redirect to a new page upon successful login
-                window.location.href = 'dashboard.html';
+                window.location.href = 'index.html';
             } else {
                 showError(data.message); 
             }
@@ -46,7 +47,10 @@
         .catch(error => {
             showError('An error occurred. Please try again.');
         });
+
+        
     });
+
 
     registrationForm.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -69,4 +73,6 @@
             showError('An error occurred. Please try again.');
         });
     });    
+
+    
 });
