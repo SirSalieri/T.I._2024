@@ -1,18 +1,49 @@
- <?php
+<?php
 session_start();
 
-// Check if the user is logged in
-if (!isset($_SESSION['role'])) {
-    header("Location: login.php");
-    exit();
-}
-
-// Check user roles for access control
-if ($_SESSION['role'] !== 'admin') {
+// Function to handle unauthorized access
+function handleUnauthorizedAccess() {
     header("Location: unauthorized_access.php");
     exit();
 }
+
+// Function to handle login redirection
+function redirectToLogin() {
+    header("Location: avatars.html");
+    exit();
+}
+
+// Check if the user is logged in
+function checkLoggedIn() {
+    if (!isset($_SESSION['role'])) {
+        redirectToLogin();
+    }
+}
+
+// Make every user an admin for testing purposes
+function makeUserAdmin() {
+    $_SESSION['role'] = 'admin';
+}
+
+// Error handling and role checks
+try {
+    checkLoggedIn();
+    makeUserAdmin(); // Make every logged-in user an admin (for testing)
+} catch (Exception $e) {
+    // Log or handle the exception as needed
+    // For example, redirect to an error page or log the error message
+    // header("Location: error_page.php");
+    // error_log($e->getMessage());
+    // Display a user-friendly error message
+    echo "An error occurred. Please try again later.";
+    exit();
+}
+
+// Redirect to the admin panel
+header("Location: admin_panel.php");
+exit();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -84,6 +115,7 @@ footer {
                 <li><a href="add_article.php">Add New Articles</a></li>
                 <li><a href="remove_article.php">Remove Articles</a></li>
                 <li><a href="last_login.php">Check User's activity</a></li>
+                <li><a href="index.html">Home</a></li>
             </ul>
         </nav>
     </header>
