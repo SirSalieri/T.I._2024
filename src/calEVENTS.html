@@ -1,0 +1,601 @@
+ <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Calendar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://github.com/googlefonts/Pacifico">
+
+  </head>
+<style>
+body {
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+  /* display: flex; */
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  place-items: center;
+  background: linear-gradient(to right, #9796f0, #42445A);
+  overflow: hidden;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: consolas;
+  box-sizing: border-box;
+}
+.slider-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -111; 
+}
+
+.slider img {
+  width: 100%;
+  height: auto;
+}
+
+.mainheader {
+background-color: #333;
+color: white;
+text-align: center;
+padding: 20px 0;
+}
+
+.logo {
+  padding: 5px;
+  background-color: rgba(163, 109, 109, 0.8);
+  border-radius: 5px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+nav {
+background-color: #333;
+color: white;
+padding: 10px;
+text-align: center;
+font-size: 1.3rem;
+
+}
+nav a {
+color: white;
+text-decoration: none;
+margin: 0 10px;
+}
+
+section {
+padding: 20px;
+text-align: center;
+}
+
+img {
+max-width: 100%;
+height: auto;
+}
+
+h2 {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Calendar Styles */
+/* ______________________________________________________________ */
+/* styles.css */
+ 
+
+
+.wrapper {
+    max-width: 1100px;
+    margin: 15px auto;
+}
+ 
+/* Calendar container */
+.container-calendar {
+    background: #ffffff;
+    padding: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+}
+ 
+/* Event section styling */
+#event-section {
+    padding: 10px;
+    background: #f5f5f5;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+}
+ 
+.container-calendar #left h1 {
+    color: green;
+    text-align: center;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 10px 0;
+}
+ 
+#event-section h3 {
+    color: green;
+    font-size: 18px;
+    margin: 0;
+}
+ 
+#event-section input[type="date"],
+#event-section input[type="text"] {
+    margin: 10px 0;
+    padding: 5px;
+    width: 80%;
+}
+ 
+#event-section button {
+    background: green;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+ 
+.event-marker {
+    position: relative;
+}
+ 
+.event-marker::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+ 
+/* event tooltip styling */
+.event-tooltip {
+    position: absolute;
+    background-color: rgba(234, 232, 232, 0.763);
+    color: black;
+    padding: 10px;
+    border-radius: 4px;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+ 
+.event-marker:hover .event-tooltip {
+    display: block;
+}
+ 
+/* Reminder section styling */
+#reminder-section {
+    padding: 10px;
+    background: #f5f5f5;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+}
+ 
+#reminder-section h3 {
+    color: green;
+    font-size: 18px;
+    margin: 0;
+}
+ 
+#reminderList {
+    list-style: none;
+    padding: 0;
+}
+ 
+#reminderList li {
+    margin: 5px 0;
+    font-size: 16px;
+}
+ 
+/* Style for the delete buttons */
+.delete-event {
+    background: rgb(237, 19, 19);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px;
+    align-items: right;
+}
+ 
+/* Buttons in the calendar */
+.button-container-calendar button {
+    cursor: pointer;
+    background: green;
+    color: #fff;
+    border: 1px solid green;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+ 
+/* Calendar table */
+.table-calendar {
+    border-collapse: collapse;
+    width: 100%;
+}
+ 
+.table-calendar td,
+.table-calendar th {
+    padding: 5px;
+    border: 1px solid #e2e2e2;
+    text-align: center;
+    vertical-align: top;
+}
+ 
+/* Date picker */
+.date-picker.selected {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    outline: 1px dashed #00BCD4;
+}
+ 
+.date-picker.selected span {
+    border-bottom: 2px solid currentColor;
+}
+ 
+/* Day-specific styling */
+.date-picker:nth-child(1) {
+    color: red;
+    /* Sunday */
+}
+ 
+.date-picker:nth-child(6) {
+    color: green;
+    /* Friday */
+}
+ 
+/* Hover effect for date cells */
+.date-picker:hover {
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+ 
+/* Header for month and year */
+#monthAndYear {
+    text-align: center;
+    margin-top: 0;
+}
+ 
+/* Navigation buttons */
+.button-container-calendar {
+    position: relative;
+    margin-bottom: 1em;
+    overflow: auto;
+    clear: both;
+}
+ 
+#previous {
+    float: left;
+}
+ 
+#next {
+    float: right;
+}
+ 
+/* Footer styling */
+.footer-container-calendar {
+    margin-top: 1em;
+    border-top: 1px solid #dadada;
+    padding: 10px 0;
+}
+ 
+.footer-container-calendar select {
+    cursor: pointer;
+    background: #ffffff;
+    color: #585858;
+    border: 1px solid #bfc5c5;
+    border-radius: 3px;
+    padding: 5px 1em;
+}
+
+/* ______________________________________________________________ */
+footer {
+    background-color: #333;
+    padding: 20px 0;
+    color: #fff; 
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.footer-links ul {
+    display: flex;
+    padding: 0; 
+    list-style-type: none; 
+}
+
+.footer-links ul li {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-links ul li img {
+    width: calc(40px + 45px);
+    height: auto; 
+    display: block;
+    margin: 0 auto; 
+}
+
+.footer-links ul li a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.footer-links ul li a:hover {
+    text-decoration: underline;
+}
+
+</style>
+ <body class="calendar-body">
+
+  <div class="mainheader">
+    <div class="logo">
+        <h1 href="index.html">UnityPulse</h1>
+    </div>
+    <div class="slider-container">
+        <div class="slider">
+            <img src="pics\44453.jpg" alt="Image 1">
+        </div>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html" style="font-family: Pacifico;">Back to Home</a>
+    <h2 class="navbar-title" style="color: white; font-style: Tillana;">About Us</h2>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="calMAP.html">Calendar</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="weather.html">Weather Info</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="avatars.html">Log in</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- Your HTML structure for the calendar -->
+    <!-- Main wrapper for the calendar application -->
+    <div class="wrapper">
+      <div class="container-calendar">
+          <div id="left">
+              <h1>Event Reminder</h1>
+              <div id="event-section">
+                  <h3>Add Event</h3>
+                  <input type="date" id="eventDate">
+                  <input type="text"
+                      id="eventTitle"
+                      placeholder="Event Title">
+                  <input type="text"
+                      id="eventDescription"
+                      placeholder="Event Description">
+                  <button id="addEvent" onclick="addEvent()">
+                      Add
+                  </button>
+              </div>
+              <div id="reminder-section">
+                  <h3>Reminders</h3>
+                  <!-- List to display reminders -->
+                  <ul id="reminderList">
+                      <li data-event-id="1">
+                          <strong>Event Title</strong>
+                          - Event Description on Event Date
+                          <button class="delete-event"
+                              onclick="deleteEvent(1)">
+                              Delete
+                          </button>
+                      </li>
+                  </ul>
+              </div>
+              <button onclick="submitToCalendar()">Submit this to your calendar!</button>
+              <script>
+     // Function to handle Google Sign-In
+     function onSignIn(googleUser) {
+            // Handle sign-in success and obtain user details, such as accessToken
+            const profile = googleUser.getBasicProfile();
+            const accessToken = googleUser.getAuthResponse().access_token;
+
+            // Store or use the accessToken for calendar API requests
+            console.log('Google access token:', accessToken);
+            // Proceed to add event to the calendar
+            submitToGoogleCalendar(accessToken);
+        }
+
+        // Function to authenticate user and add event to Google Calendar
+        function authenticateAndAddToCalendar() {
+            // Initialize Google Sign-In
+            gapi.load('auth2', function () {
+                const auth2 = gapi.auth2.init({
+                    client_id: 'YOUR_CLIENT_ID', // Replace with your Google client ID
+                    scope: 'profile email https://www.googleapis.com/auth/calendar.events',
+                });
+
+                auth2.signIn().then(
+                    function (googleUser) {
+                        onSignIn(googleUser);
+                    },
+                    function (error) {
+                        console.error('Sign-in error:', error);
+                    }
+                );
+            });
+        }
+
+        // Function to add event to Google Calendar using obtained accessToken
+        function submitToGoogleCalendar(accessToken) {
+            // Replace with the actual eventData construction from the previous example
+
+                        function submitToCalendar() {
+                      const eventDate = document.getElementById('eventDate').value;
+                      const eventTitle = document.getElementById('eventTitle').value;
+                      const eventDescription = document.getElementById('eventDescription').value;
+          
+                      const eventData = {
+                          subject: eventTitle,
+                          body: {
+                              contentType: 'HTML',
+                              content: eventDescription,
+                          },
+                          start: {
+                              dateTime: eventDate + 'T00:00:00', // Set the start date and time
+                              timeZone: 'YourTimeZone', // Replace with your timezone
+                          },
+                          end: {
+                              dateTime: eventDate + 'T23:59:59', // Set the end date and time
+                              timeZone: 'YourTimeZone', // Replace with your timezone
+                          },
+                      };
+
+            };
+
+            fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', {
+                method: 'POST',
+                headers: {
+                    Authorization: 'Bearer ' + accessToken,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(eventData),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log('Event added:', data);
+                    alert('Event added to Google Calendar!');
+                })
+                .catch((error) => {
+                    console.error('Error adding event:', error);
+                });
+        }
+    </script>
+    <!-- Include Google Sign-In Script -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+          </div>
+          <div id="right">
+              <h3 id="monthAndYear"></h3>
+              <div class="button-container-calendar">
+                  <button id="previous"
+                          onclick="previous()">
+                        ‹
+                    </button>
+                  <button id="next"
+                          onclick="next()">
+                        ›
+                    </button>
+              </div>
+              <table class="table-calendar"
+                     id="calendar"
+                     data-lang="en">
+                  <thead id="thead-month"></thead>
+                  <!-- Table body for displaying the calendar -->
+                  <tbody id="calendar-body"></tbody>
+              </table>
+              <div class="footer-container-calendar">
+                  <label for="month">Jump To: </label>
+                  <!-- Dropdowns to select a specific month and year -->
+                  <select id="month" onchange="jump()">
+                      <option value=0>Jan</option>
+                      <option value=1>Feb</option>
+                      <option value=2>Mar</option>
+                      <option value=3>Apr</option>
+                      <option value=4>May</option>
+                      <option value=5>Jun</option>
+                      <option value=6>Jul</option>
+                      <option value=7>Aug</option>
+                      <option value=8>Sep</option>
+                      <option value=9>Oct</option>
+                      <option value=10>Nov</option>
+                      <option value=11>Dec</option>
+                  </select>
+                  <!-- Dropdown to select a specific year -->
+                  <select id="year" onchange="jump()"></select>
+              </div>
+          </div>
+      </div>
+  </div>
+    <script src="calEVENTS.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <footer>
+      <div class="footer-container">
+          <div class="footer-contact">
+              <h4>Contact Us</h4>
+              <p>Email: <br> mihailokoprivica480@gmail.com</p>
+              <p>Phone: <br> (+47) 973 26 424</p>
+              <p>Address: <br> Sinsenterrassen 14, 0574 Oslo, Norway
+              </p>
+          </div>
+          <div class="footer-designer">
+              <h4>Designed by</h4>
+              <p>Designer Name</p>
+          </div>
+          <div class="footer-links">
+              <h4>Explore</h4>
+              <ul class="foot-ul">
+                  <li class="foot-li">
+                      <a href="calMAP.html">
+                          <img src="./pics/NEW_CALENDAR-.png" alt="Calendar Icon"> Calendar
+                      </a>
+                  </li>
+                  <li class="foot-li">
+                      <a href="weather.html">
+                          <img src="./pics/weathercolorful-.png" alt="Weather Icon"> Weather
+                      </a>
+                  </li>
+                  <li class="foot-li">
+                      <a href="sports.html">
+                          <img src="./pics/sportcolorfulTEST-.png" alt="Sports Icon"> Sports News
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </footer>
+</body>
+</html> 

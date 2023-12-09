@@ -1,0 +1,457 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogIn/SignUp</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://github.com/googlefonts/Pacifico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
+    <script src="login_signup.js"></script>
+</head>
+<style>
+body, h1, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+.slider-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -111; 
+}
+
+.slider img {
+  width: 100%;
+  height: auto;
+}
+
+.mainheader {
+background-color: #333;
+color: white;
+text-align: center;
+padding: 20px 0;
+}
+
+.logo {
+  padding: 5px;
+  background-color: rgba(163, 109, 109, 0.8);
+  border-radius: 5px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+
+nav {
+background-color: #333;
+color: white;
+padding: 10px;
+text-align: center;
+font-size: 1.3rem;
+
+}
+nav a {
+color: white;
+text-decoration: none;
+margin: 0 10px;
+}
+section {
+padding: 20px;
+text-align: center;
+}
+
+img {
+max-width: 100%;
+height: auto;
+}
+
+h2 {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.total-setup {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    height: auto;
+    margin: 20px;
+}
+
+.login-container {
+    min-width: 20vw;
+    min-height: 30vh;
+    background-color: #f5f5f5; 
+    border: 1px solid #ccc; 
+    border-radius: 10px;
+    padding: 20px; 
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3); 
+}
+
+.lgin-subtitles {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.lgin-logo {
+    padding: 5px;  
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    border-radius: 5px;
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+}
+
+.login-container button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.login-container button:hover {
+    background-color: #0056b3;
+}
+
+.login-container a {
+    color: #007BFF;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+}
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+.registration-container {
+    background-color: #f9f9f9;
+    min-width: 20vw;
+    min-height: 30vh;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+    display: none;
+}
+
+.registration-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.registration-container input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    text-align: center;
+    font-style: italic;
+}
+.registration-container a {
+    color: #007BFF;
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.registration-container a:hover {
+    text-decoration: underline;
+}
+
+
+.registration-container button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+}
+
+
+.registration-container button:hover {
+    background-color: #0056b3;
+
+}
+
+.registration-container p {
+    margin-top: 10px;
+}
+
+.registration-container #register-link {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.registration-container #register-link:hover {
+    text-decoration: underline;
+}
+footer {
+    background-color: #333;
+    padding: 20px 0;
+    color: #fff; /* Set text color to white */
+}
+
+/* Container holding footer elements */
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+/* Style for the unordered list */
+.footer-links ul {
+    display: flex;
+    padding: 0; /* Remove default padding */
+    list-style-type: none; /* Remove default list styles */
+}
+
+/* Style for list items */
+.footer-links ul li {
+    margin: 10px;
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+/* Style for the icons */
+.footer-links ul li img {
+    width: calc(40px + 45px); /* Set a specific width for the icons */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin: 0 auto; /* Center the icons horizontally */
+}
+
+/* Additional styles for links */
+.footer-links ul li a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1rem; /* Reduce font size of anchor titles */
+}
+
+/* Hover effect for links */
+.footer-links ul li a:hover {
+    text-decoration: underline;
+}
+
+</style>
+<body>
+
+    <header class="mainheader">
+        <div class="logo">
+            <h1 class="in-titl" href="index.html">UnityPulse</h1>
+        </div>
+        <div class="slider-container">
+        <div class="slider">
+            <img src="pics/44453.jpg" alt="Image 1">
+        </div>
+    </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html" style="font-family: Pacifico;">Back to Home</a>
+        <h2 class="navbar-title" style="color: white; font-style: Tillana;">About Us</h2>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="calMAP.html">Calendar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="weather.html">Weather Info</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="avatars.html">Log in</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="total-setup">
+        <div class="login-container">
+            <h1 class="lgin-logo">UnityPulse</h1>
+            <h2 class="lgin-subtitles">Log in / Sign up to your profile at UnityPulse</h2>
+            <form id="login-form">
+                <label for="email">Log in with your email or username:</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email or username">
+                <label for="password" >Enter your password:</label>
+                <input type="password" placeholder="Password" id="password" name="password" required>
+                <button type="submit">LOG IN</button>
+            </form>
+            <p>Not registered yet? <a href="#" id="register-link">Register here</a></p>
+        </div>
+        <div class="registration-container" style="display: none;">
+            <h1 class="lgin-logo">UnityPulse</h1>
+            <h2 class="lgin-subtitles">Sign up at UnityPulse</h2>
+            <form id="registration-form" method="POST" action="register.php">
+                <label for="register-name">Your name</label>
+                <input type="text" id="register-name" name="register-name" placeholder="Enter your name">
+        
+                <label for="register-form">Your surname:</label>
+                <input type="text" id="register-form" name="register-form" placeholder="Enter your surname">
+        
+                <label for="register-username">Your new username:</label>
+                <input type="text" id="register-username" name="register-username" placeholder="Enter your new username">
+        
+                <label for="register-email">Your email address:</label>
+                <input type="email" id="register-email" name="register-email" placeholder="Enter your email">
+        
+                <label for="register-password">Create a password:</label>
+                <input type="password" id="register-password" name="register-password" placeholder="Password">
+        
+                <label for="repeat-password">Repeat your password:</label>
+                <input type="password" id="repeat-password" name="repeat-password" placeholder="Repeat Password">
+        
+                <button id="register-button" type="submit">SIGN UP</button>
+            </form>
+        </div>
+        
+    <div id="error-popup" class="error-popup"></div>
+      <script>
+         document.addEventListener('DOMContentLoaded', function() {
+        const loginContainer = document.querySelector('.login-container');
+        const registrationContainer = document.querySelector('.registration-container');
+        const registerLink = document.getElementById('register-link');
+        const loginForm = document.getElementById('login-form');
+        const registrationForm = document.getElementById('registration-form');
+        const errorPopup = document.getElementById('error-popup');
+
+        function toggleForms(event) {
+            event.preventDefault();
+            if (loginContainer.style.display === 'block') {
+                loginContainer.style.display = 'none';
+                registrationContainer.style.display = 'block';
+            } else {
+                loginContainer.style.display = 'block';
+                registrationContainer.style.display = 'none';
+            }
+            errorPopup.style.display = 'none'; // Clear any previous error messages when toggling forms
+            errorPopup.textContent = '';
+        }
+
+        registerLink.addEventListener('click', toggleForms);
+
+        // Function to handle form submissions
+        function handleFormSubmit(event, formType) {
+            event.preventDefault();
+            const formData = new FormData(formType);
+            const endpoint = formType === loginForm ? 'login.php' : 'register.php'; // Adjust the endpoints as needed
+            fetch(endpoint, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    if (formType === loginForm) {
+                        window.location.href = 'dashboard.html';
+                    } else {
+                        alert('Registration successful!');
+                        // Redirect or perform other actions after successful registration
+                    }
+                } else {
+                    showErrorPopup(data.message); // Display error message from the server
+                }
+            })
+            .catch(error => {
+                showErrorPopup('An error occurred. Please try again.'); // Display a generic error
+            });
+        }
+
+        loginForm.addEventListener('submit', event => handleFormSubmit(event, loginForm));
+        registrationForm.addEventListener('submit', event => handleFormSubmit(event, registrationForm));
+
+        function showErrorPopup(message) {
+            errorPopup.textContent = message;
+            errorPopup.style.display = 'block';
+        }
+    });
+
+        </script>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>Email: <br> mihailokoprivica480@gmail.com</p>
+                <p>Phone: <br> (+47) 973 26 424</p>
+                <p>Address: <br> Sinsenterrassen 14, 0574 Oslo, Norway
+                </p>
+            </div>
+            <div class="footer-designer">
+                <h4>Designed by</h4>
+                <p>Designer Name</p>
+            </div>
+            <div class="footer-links">
+                <h4>Explore</h4>
+                <ul class="foot-ul">
+                    <li class="foot-li">
+                        <a href="calMAP.html">
+                            <img src="pics\NEW_CALENDAR--.png" alt="Calendar Icon"> Calendar
+                        </a>
+                    </li>
+                    <li class="foot-li">
+                        <a href="weather.html">
+                            <img src="pics\weathercolorful--.png" alt="Weather Icon"> Weather
+                        </a>
+                    </li>
+                    <li class="foot-li">
+                        <a href="sports.html">
+                            <img src="pics\sportcolorfulTEST--.png" alt="Sports Icon"> Sports News
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

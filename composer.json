@@ -1,0 +1,7 @@
+{
+    "name": "unitypulse",
+    "description": "Web-based application for user registration and interaction",
+    "require": {
+        "php": "^7.4"
+    }
+}
