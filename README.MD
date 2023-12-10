@@ -1,4 +1,4 @@
- # Prosjektbeskrivelse
+ # Prosjekt-målet
 
   Mitt mål i denne terminoppgaven er å skape en fungerende portal-webside som skal gi brukere (med aldersgrensen fra 15 til 60) mulighet for å lese gjennom forskjellige nyhetsartikler, se på været-oversikt, sjekke kalendaren og sportsnyheter og legge til hendelser på sin personlig kalendar. Samtidig de skal kunne logge på / registrere seg, for å kunne delta til den offentlige forumen hvor de ville kunne poste komentar. Det er det som gjelder de sluttende brukere.
 
