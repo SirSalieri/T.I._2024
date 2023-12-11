@@ -275,6 +275,13 @@ footer {
     text-decoration: underline;
 }
 
+.alert {
+background-color: #f44336;
+color: white;
+padding: 15px;
+margin-bottom: 20px;
+}
+
 </style>
 <body>
 
@@ -349,50 +356,57 @@ footer {
                 <label for="repeat-password">Repeat your password:</label>
                 <input type="password" id="repeat-password" name="repeat-password" placeholder="Repeat Password">
         
-                <button id="register-button"><a href="logged-in.html">SIGN UP</a></button>
+                <button id="register-button"><a style="color:white;" href="logged-in.html">SIGN UP</a></button>
             </form>
         </div>
         
-    <div id="error-popup" class="error-popup"></div>
-        <script>
-        </script>
+        <div id="error-popup" class="error-popup"></div>
+
     </div>
+    <script>
+               let params = new URLSearchParams(window.location.search);
+        if (params.has('admin_access') && params.get('admin_access') === 'false') {
+            // Show alert with custom message
+            alert("You have been redirected to the 'Log in' page.\n\nP.S. Sorry, seems like you are missing required access! 🤷‍♀️😊");
+        }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <footer>
-        <div class="footer-container">
-            <div class="footer-contact">
-                <h4>Contact Us</h4>
-                <p>Email: <br> mihailokoprivica480@gmail.com</p>
-                <p>Phone: <br> (+47) 973 26 424</p>
-                <p>Address: <br> Sinsenterrassen 14, 0574 Oslo, Norway
-                </p>
-            </div>
-            <div class="footer-designer">
-                <h4>Designed by</h4>
-                <p>Designer Name</p>
-            </div>
-            <div class="footer-links">
-                <h4>Explore</h4>
-                <ul class="foot-ul">
-                    <li class="foot-li">
-                        <a href="calMAP.html">
-                            <img src="pics\NEW_CALENDAR--.png" alt="Calendar Icon"> Calendar
-                        </a>
-                    </li>
-                    <li class="foot-li">
-                        <a href="weather.html">
-                            <img src="pics\weathercolorful--.png" alt="Weather Icon"> Weather
-                        </a>
-                    </li>
-                    <li class="foot-li">
-                        <a href="sports.html">
-                            <img src="pics\sportcolorfulTEST--.png" alt="Sports Icon"> Sports News
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </footer>
+      <div class="footer-container">
+          <div class="footer-contact">
+              <h4>Contact Us</h4>
+              <p>Email: <br> mihailokoprivica480@gmail.com</p>
+              <p>Phone: <br> (+47) 973 26 424</p>
+              <p>Address: <br> Sinsenterrassen 14, 0574 Oslo, Norway
+              </p>
+          </div>
+          <div class="footer-designer">
+              <h4>Designed by</h4>
+              <p>Designer Name</p>
+          </div>
+          <div class="footer-links">
+              <h4>Explore</h4>
+              <ul class="foot-ul">
+                  <li class="foot-li">
+                      <a href="calMAP.html">
+                          <img src="./pics/NEW_CALENDAR-.png" alt="Calendar Icon"> Calendar
+                      </a>
+                  </li>
+                  <li class="foot-li">
+                      <a href="weather.html">
+                          <img src="./pics/weathercolorful-.png" alt="Weather Icon"> Weather
+                      </a>
+                  </li>
+                  <li class="foot-li">
+                      <a href="sports.html">
+                          <img src="./pics/sportcolorfulTEST-.png" alt="Sports Icon"> Sports News
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </footer>
 </body>
 </html>
+

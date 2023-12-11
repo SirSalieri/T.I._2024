@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Function to handle unauthorized access
 function handleUnauthorizedAccess() {
     header("Location: unauthorized_access.php");
     exit();
@@ -20,44 +19,42 @@ function checkLoggedIn() {
     }
 }
 
-// Make every user an admin for testing purposes
-function makeUserAdmin() {
+// Check user roles for access control
+function checkUserRole() {
+    if ($_SESSION['role'] !== 'admin') {
+        handleUnauthorizedAccess();
+    }
+}
+
+// Bypass role checks based on a specific condition (e.g., a GET parameter)
+if (isset($_GET['admin_access']) && $_GET['admin_access'] === 'true') {
+    // If the condition is met, set the user as an admin for testing purposes
     $_SESSION['role'] = 'admin';
 }
 
-// Error handling and role checks
 try {
     checkLoggedIn();
-    makeUserAdmin(); // Make every logged-in user an admin (for testing)
+    checkUserRole();
 } catch (Exception $e) {
-    // Log or handle the exception as needed
-    // For example, redirect to an error page or log the error message
-    // header("Location: error_page.php");
-    // error_log($e->getMessage());
-    // Display a user-friendly error message
+    header("Location: error_page.php");
+    error_log($e->getMessage());
     echo "An error occurred. Please try again later.";
     exit();
 }
-
-// Redirect to the admin panel
+header("Location: avatars.html?access=false");
+exit();
 header("Location: admin_panel.php");
 exit();
 ?>
-
-
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
-    <!-- Include necessary stylesheets, scripts, or libraries -->
-    <link rel="stylesheet" href="admin_styles.css">
 </head>
 <style>
-    /* admin_styles.css */
-
-/* General styling for the admin panel */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -132,8 +129,6 @@ footer {
         <!-- Footer content -->
         <p>&copy; 2023 Your Company</p>
     </footer>
-
-    <!-- Include necessary scripts -->
     <script src="admin_scripts.js"></script>
 </body>
 </html>
