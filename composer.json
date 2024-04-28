@@ -1,7 +1,7 @@
 {
-    "name": "unitypulse",
+    "name": "terminoppgave_innlevering/nordpublica_portal",
     "description": "Web-based application for user registration and interaction",
     "require": {
-        "php": "^7.4"
+        "php": "^7.4 || ^8.0"
     }
 }

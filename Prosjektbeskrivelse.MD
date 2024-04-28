@@ -1,5 +1,5 @@
 MIKE'S TERMINOPPGAVE:
-  __UnityPulse__
+  __NordPublica__
   
 
 ## Description
@@ -19,7 +19,7 @@ This repository contains code for:
 1) Mainpage - index.html;
 2) all website's pages:
 
-   - about.html [for describing the UnityPulse - their services and history],
+   - about.html [for describing the NordPublica - their services and history],
    - avatars.html [for logging in / signing up to the portal]
    - calMAP.html [main calendar page; with calendar map with live tracking of the time],
    - calEVENTS.html [calendar-oriented element for making and remembering the events user makes on this page; ALSO WAS SUPPOSED to work, but due to lack of the time, does not have finished backend],

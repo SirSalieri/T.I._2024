@@ -5,7 +5,7 @@ This Application collects some Personal Data from its Users.
 This document can be printed for reference by using the print command in the settings of any browser.
 
 Owner and Data Controller
-UnityPulse Inc. - Sinsenterrassen 14,
+NordPublica Inc. - Ravnkolbakken 32,
 OSL 0574, Norge
 
 Owner contact email: mihailokoprivica480@gmail.com
