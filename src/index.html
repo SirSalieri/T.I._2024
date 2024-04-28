@@ -55,37 +55,37 @@ if (isset($_SERVER['HTTP_X_FORWARDED_URL']) && strpos($_SERVER['HTTP_X_FORWARDED
     <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
 </head>
 <style>
-
 body {
-  background-color: #f2f2f2;
+  background: linear-gradient(to right, #e6f1ff, #f2f2f2);
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; 
+  align-items: center;
+  min-height: 100vh;
   margin: 0;
-
 }
 
-.slider-container {
-  position: fixed;
-  top: 0;
-  left: 0;
+.news, nav, .mainheader {
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white overlay */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+nav a, .footer-links ul li a {
+  color: #0056b3; /* Brighter color for links for better visibility */
+  font-weight: bold; /* Makes links bolder */
+}
+
+.in-container {
+  max-width: 1200px; /* Adjust as needed */
   width: 100%;
-  height: 100%;
-  z-index: -111; 
+  margin: 20px auto;
 }
 
-.slider img {
-  width: 100%;
-  height: auto;
-}
-
-.mainheader {
-background-color: #333;
-color: white;
-text-align: center;
-padding: 20px 0;
-}
+/* .mainheader, nav {
+  background-color: #333;
+  color: white;
+} */
 
 .logo {
   padding: 5px;
@@ -95,95 +95,79 @@ padding: 20px 0;
 }
 
 nav {
-background-color: #333;
-color: white;
-padding: 10px;
-text-align: center;
-font-size: 1.3rem;
-
+  /* padding: 10px; */
+  text-align: center;
+  font-size: 1.3rem;
 }
+
 nav a {
-color: white;
-text-decoration: none;
-margin: 0 10px;
-}
-section {
-padding: 20px;
-text-align: center;
-}
-
-img {
-max-width: 100%;
-height: auto;
-}
-
-h2 {
-  font-size: 20px;
-  margin-top: 10px;
+  text-decoration: none;
+  margin: 0 10px;
 }
 
 .ar-titl {
-  background-color: rgb(204, 204, 204, 0.4);
-  color: #000000;
-  width: auto;
-  padding: 15px; 
-  text-align: center; 
-  font: 2rem bold;
-  font-family: Arial, sans-serif;
+  background-color: rgba(204, 204, 204, 0.8);
+  color: #333; /* Ensures title is visible against light background */
+  font-size: 2.2rem; /* Slightly larger title for emphasis */
+  padding: 15px;
+  font-weight: bold;
+  text-align: center;
 }
 
-.articles{
+.articles {
   display: flex;
   flex-wrap: wrap;
-  gap: 50px;
+  justify-content: center; /* Centers the articles */
+  gap: 20px;
+  padding: 20px 0;
 }
 
 .news {
-  flex: 1;
-  max-width: calc(33.3333% - 20px);
+  flex: 0 1 calc(33.333% - 40px); /* Adjusts size to include gap */
+  max-width: calc(33.333% - 40px); /* Ensures no overflow with margins */
   border: 1px solid #ddd;
-  padding: 20px;
+  /* padding: 20px; */
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* Organizes content vertically */
 }
 
-.news img {
-  max-width: 100%;
-  height: auto;
+@media (max-width: 768px) {
+  .news {
+    flex: 0 1 100%; /* Full width on smaller screens */
+    max-width: 100%;
+  }
 }
 
 .news h3 {
-  font-size: 1.5rem;
-  margin-top: 10px;
+    color: #0056b3; /* Theme color for heading to stand out */
+  font-size: 1.8rem; /* Larger heading for better visibility */
 }
 
-.news p {
-  font-size: 1rem;
-  margin-top: 10px;
-}
-
-.news a {
-  display: block;
-  text-align: right;
-  margin-top: 10px;
-  text-decoration: none;
-  color: #007BFF;
-  font-weight: bold;
-  transition: color 0.3s;
+.news p, .news a {
+  font-size: 1.1rem;
 }
 
 .news a:hover {
   color: #0056b3;
+  text-decoration: underline; /* More noticeable hover effect */
+}
+
+.news:hover {
+  transform: scale(1.03); /* Slight zoom on hover */
+  transition: transform 0.3s ease-in-out;
 }
 
 footer {
     background-color: #333;
-    padding: 20px 0;
+    /* padding: 20px 0; */
     color: #fff;
     margin-top: auto;
 }
 
 .footer-container {
+    background-color: rgba(51, 51, 51, 0.9); /* Darker background for footer */
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
@@ -215,11 +199,14 @@ footer {
     font-weight: bold;
     text-decoration: none;
     font-size: 1rem;
+   text-shadow: none; /* No shadow needed due to sufficient contrast */
 }
 
 .footer-links ul li a:hover {
     text-decoration: underline;
 }
+
+
 
 </style>
 <body>
