@@ -1,20 +1,23 @@
 <?php
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+
 use Dotenv\Dotenv;
 
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->loadEnv(__DIR__.'/.env');
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../support');
+$dotenv->load();
 
-$databasePath = __DIR__ . '/' . $_ENV['DB_PATH'] ?? 'w3s-dynamic-storage/database.db';
+$host = $_ENV['DB_HOST'];
+$dbname = $_ENV['DB_NAME'];
+$username = $_ENV['DB_USERNAME'];
+$password = $_ENV['DB_PASSWORD'];
 
 try {
-    $conn = new PDO('sqlite:' . $databasePath);
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // Additional configurations if needed
-
-    echo "Connected to the SQLite database successfully";
+    echo "Connected to the MySQL database successfully";
 } catch (PDOException $e) {
     error_log("Connection failed: " . $e->getMessage());
-    // Display a generic error message to users
     die("Connection failed. Please contact the administrator.");
 }
+?>
+

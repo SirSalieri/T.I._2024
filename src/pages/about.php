@@ -144,7 +144,7 @@ footer {
     </header>
     <div class="slider-thumb"></div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html" style="font-family: Pacifico;">Back to Home</a>
+        <a class="navbar-brand" href="../index.html" style="font-family: Pacifico;">Back to Home</a>
         <h2 class="navbar-title" style="color: white; font-style: Tillana;">About Us</h2>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -164,7 +164,7 @@ footer {
                     <a class="nav-link" href="contact.html">Contact us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="avatars.html">Log in</a>
+                    <a class="nav-link" href="../LOG_IN_SYSTEM/login.php">Log in</a>
                 </li>
             </ul>
         </div>
