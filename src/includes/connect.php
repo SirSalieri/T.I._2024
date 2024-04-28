@@ -1,9 +1,16 @@
 <?php
-require_once __DIR__ . '/../vendor/autoload.php';
+$autoloadPath = __DIR__ . '\..\..\vendor\autoload.php';
+
+if (file_exists($autoloadPath)) {
+    require_once $autoloadPath;
+} else {
+    die("The required loader is missing. Please run 'composer install'.");
+}
+
 
 use Dotenv\Dotenv;
 
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../support');
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../../support');
 $dotenv->load();
 
 $host = $_ENV['DB_HOST'];
