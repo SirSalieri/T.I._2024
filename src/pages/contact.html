@@ -1,0 +1,367 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Contact us!</title>
+</head>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(90deg,#e52e71,#ff8a00);
+}
+
+.slider-thumb::before {
+  position: absolute;
+  content: "";
+  left: 30%;
+  top: 20%;
+  width: 450px;
+  height: 450px;
+  background: #17141d;
+  border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
+  will-change: border-radius, transform, opacity;
+  animation: sliderShape 5s linear infinite;
+  display: block;
+  z-index: -1;
+  -webkit-animation: sliderShape 5s linear infinite;
+}
+@keyframes sliderShape{
+  0%,100%{
+  border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    transform: translate3d(0,0,0) rotateZ(0.01deg);
+  }
+  34%{
+      border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+    transform:  translate3d(0,5px,0) rotateZ(0.01deg);
+  }
+  50%{
+    transform: translate3d(0,0,0) rotateZ(0.01deg);
+  }
+  67%{
+    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60% ;
+    transform: translate3d(0,-3px,0) rotateZ(0.01deg);
+  }
+}
+
+.mainheader {
+background-color: #333;
+color: white;
+text-align: center;
+padding: 20px 0;
+}
+
+.logo {
+  padding: 5px;
+  background-color: rgba(163, 109, 109, 0.8);
+  border-radius: 5px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+
+nav {
+background-color: #333;
+color: white;
+padding: 10px;
+text-align: center;
+font-size: 1.3rem;
+
+}
+nav a {
+color: white;
+text-decoration: none;
+margin: 0 10px;
+}
+section {
+padding: 20px;
+text-align: center;
+}
+
+img {
+max-width: 100%;
+height: auto;
+}
+
+h2 {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.container_contact {
+  margin: 20px;
+}
+.contact-index {
+  display: grid;
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 3px rgb(0, 0, 0) solid;
+  width: 100%;
+  max-width: 500px;
+  height: fit-content;
+  border-radius: 14px;
+  margin: 0 auto;
+  align-items: center;
+  text-align: center;
+  justify-content: center; /* Change this line to center horizontally and vertically */
+}
+
+input[type=text], select, textarea {
+width: 100%;
+padding: 12px;
+border: 1px solid #ccc;
+border-radius: 17px;
+margin-top: 6px;
+margin-bottom: 16px;
+resize: vertical;
+}
+
+input[type=submit] {
+background-color: white;
+color: rgb(0, 0, 0);
+border-radius: 17px;
+padding: 12px 20px;
+cursor: pointer;
+transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+input[type=submit]:hover {
+background-color: red;
+color: white;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+  }
+}
+
+.inputs_contacts {
+  font-size: large;
+}
+
+.inputs_contacts:hover {
+  border:rgb(0, 0, 0) solid 4px;
+  font-style: bold;
+}
+
+/* about page */
+
+.content-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.content-item {
+  flex: 1;
+  padding: 10px;
+  background-color: #fff;
+  border: 4px solid #ff0000;
+  margin: 10px;
+}
+
+.content-item img {
+  max-width: 100%;
+  height: auto;
+}
+
+.a-title {
+  background-color: rgb(255, 255, 255, 0.4);
+  color: #000000;
+  text-align: center; 
+  font-size: 32px; 
+  text-transform: uppercase; 
+  border-bottom: 5px solid #f1ff72;
+  padding: 10px;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.h-text {
+  background-color: #cccccc;
+  color: #000000;
+  width: 80%;
+  justify-self: center;
+  padding: 15px; 
+  text-align: center; 
+  font: 1.7rem bold;
+}
+
+footer {
+    background-color: #333;
+    padding: 20px 0;
+    color: #fff; 
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.footer-links ul {
+    display: flex;
+    padding: 0; 
+    list-style-type: none; 
+}
+
+.footer-links ul li {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-links ul li img {
+    width: calc(40px + 45px);
+    height: auto; 
+    display: block;
+    margin: 0 auto; 
+}
+
+.footer-links ul li a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.footer-links ul li a:hover {
+    text-decoration: underline;
+}
+
+</style>
+<body>
+    <header class="mainheader">
+        <div class="logo">
+            <h1 class="in-titl" href="index.html">NordPublica</h1>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="index.html" style="font-family: Pacifico;">Back to Home</a>
+      <h2 class="navbar-title" style="color: white; font-style: Tillana;">Contact Us</h2>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="calMAP.html">Calendar</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="weather.html">Weather Info</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="contact.html">Contact us</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="avatars.html">Log in</a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+  <div class="slider-thumb"></div>
+    <div class="container_contact" >
+      <div class="contact-index">
+          <form id="contactForm" onsubmit="submitForm(); return false;" action="#">
+              <label for="fname" style="font-size: large;">First Name</label>
+              <input type="text"id="fname" name="firstname" placeholder="Your name..." class="inputs_contacts">
+              <label for="lname" style="font-size: large;">Last Name</label>
+              <input type="text" id="lname" name="lastname" placeholder="Your last name..." class="inputs_contacts">
+              <label for="eadress" style="font-size: large;">E-mail adress</label>
+              <input class="inputs_contacts" type="text" id="eadress" name="emailadress"  placeholder="Your email address...">
+              <label for="country" style="font-size: large;">Country</label>
+              <select id="country" name="country" class="inputs_contacts">
+              <option value="australia">Australia</option>
+              <option value="canada">Canada</option>
+              <option value="norway">Norway</option>
+              <option value="italia">Italia</option>
+              <option value="russia">Russia</option>
+              <option value="montenegro">Montenegro</option>
+              <option value="serbia">Serbia</option>
+              <option value="bosnia">Bosnia and Herzegovinia</option>
+              <option value="croatia">Croatia</option>
+              <option value="ukraina">Ukraina</option>
+              <option value="unitedkingdom">United Kingdom</option>
+              <option value="nmacedonia">North Macedonia</option>
+              <option value="albania">Albania</option>
+              <option value="slovenia">Slovenia</option>
+              <option value="czhech">Czhech Republic</option>
+              <option value=" sweden">Sweden</option>
+              <option value="denmark">Denmark</option>
+              <option value="finland">Finland</option>
+              <option value="germany">Germany</option>
+              <option value="poland">Poland</option>
+              </select>
+              <label for="subject" style="font-size: large;">Subject</label>
+              <textarea id="subject" name="subject" placeholder="YOUR MESSAGE..." class="inputs_contacts"></textarea>
+              <input type="submit" value="Submit">
+              <script> 
+                function submitForm() {
+                  var form = document.getElementById("contactForm");
+                  var name = form.elements["firstname"].value + " " + form.elements["lastname"].value;
+                  var email = "mihailokoprivica480@gmail.com";
+                  var subject = "New message from " + name;
+                  var country = form.elements["country"].value;
+                  var emailFrom = form.elements["emailadress"].value;
+                  var message = form.elements["subject"].value;
+                  
+                  var emailBody = `Name: ${name}\n
+                  Email: ${emailFrom}\n
+                  Country: ${country}\n
+                  Message: ${message}`;
+                  window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+                }
+              </script>
+          </form>
+      </div>
+  </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <footer>
+      <div class="footer-container">
+          <div class="footer-contact">
+              <h4>Contact Us</h4>
+              <p>Email: <br> mihailokoprivica480@gmail.com</p>
+              <p>Phone: <br> (+47) 973 26 424</p>
+              <p>Address: <br> Sinsenterrassen 14, 0574 Oslo, Norway
+              </p>
+          </div>
+          <div class="footer-designer">
+              <h4>Designed by</h4>
+              <p>Designer Name</p>
+          </div>
+          <div class="footer-links">
+              <h4>Explore</h4>
+              <ul class="foot-ul">
+                  <li class="foot-li">
+                      <a href="calMAP.html">
+                          <img src="./pics/NEW_CALENDAR-.png" alt="Calendar Icon"> Calendar
+                      </a>
+                  </li>
+                  <li class="foot-li">
+                      <a href="weather.html">
+                          <img src="./pics/weathercolorful-.png" alt="Weather Icon"> Weather
+                      </a>
+                  </li>
+                  <li class="foot-li">
+                      <a href="sports.html">
+                          <img src="./pics/sportcolorfulTEST-.png" alt="Sports Icon"> Sports News
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </footer>
+</body>
+
+</html>
