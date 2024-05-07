@@ -181,7 +181,7 @@ footer {
         <section class="history-section" style="font-size: 1.2rem;">
             <div class="history-item">
                 <div class="content-item">
-                    <img src="./pics/Newspapers_1.jpg" alt="Image 1">
+                    <img src="../pics/Newspapers_1.jpg" alt="Image 1">
                     <p class="a-parphs">
                         NordPublica began its journey in the year 2005 with a passionate group of developers, envisioning a platform that could transform the landscape of game development. Inspired by the idea of fostering innovation and accessibility within the gaming community, our founders set out on an ambitious quest to democratize game development tools.
                     </p>
@@ -190,7 +190,7 @@ footer {
 
             <div class="history-item">
                 <div class="content-item">
-                    <img src="./pics/about_pic2.jpg" alt="Image 2">
+                    <img src="../pics/about_pic2.jpg" alt="Image 2">
                     <p class="a-parphs">
                         The initial years were a testament to perseverance and dedication, as NordPublica navigated through the challenges of a rapidly evolving industry. We focused on crafting intuitive frameworks and cultivating a supportive ecosystem that empowered developers worldwide to bring their visions to life.
                     </p>
@@ -199,7 +199,7 @@ footer {
 
             <div class="history-item">
                 <div class="content-item">
-                    <img src="pics/PhotoAbout.jpg" alt="Image 3">
+                    <img src="../pics/PhotoAbout.jpg" alt="Image 3">
                     <p class="a-parphs">
                         As the gaming landscape expanded, so did our commitment. Through countless iterations and innovations, NordPublica continued to refine its platform, introducing breakthrough features and resources that enriched the experiences of both aspiring and seasoned developers.
                     </p>
@@ -208,7 +208,7 @@ footer {
 
             <div class="history-item">
                 <div class="content-item">
-                    <img src="pics/PhotoAbout.jpg" alt="Image 4">
+                    <img src="../pics/PhotoAbout.jpg" alt="Image 4">
                     <p class="a-parphs">
                         Today, NordPublica stands as a beacon of creativity and unity within the gaming community. With a global network of developers and a dedication to empowering creativity, we continue to evolve, striving to redefine the boundaries of possibility in game development.
                     </p>
@@ -238,17 +238,17 @@ footer {
               <ul class="foot-ul">
                   <li class="foot-li">
                       <a href="calMAP.html">
-                          <img src="./pics/NEW_CALENDAR-.png" alt="Calendar Icon"> Calendar
+                          <img src="../pics/NEW_CALENDAR-.png" alt="Calendar Icon"> Calendar
                       </a>
                   </li>
                   <li class="foot-li">
                       <a href="weather.html">
-                          <img src="./pics/weathercolorful-.png" alt="Weather Icon"> Weather
+                          <img src="../pics/weathercolorful-.png" alt="Weather Icon"> Weather
                       </a>
                   </li>
                   <li class="foot-li">
                       <a href="sports.html">
-                          <img src="./pics/sportcolorfulTEST-.png" alt="Sports Icon"> Sports News
+                          <img src="../pics/sportcolorfulTEST-.png" alt="Sports Icon"> Sports News
                       </a>
                   </li>
               </ul>

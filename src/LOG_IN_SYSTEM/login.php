@@ -44,11 +44,64 @@ if (isset($_SESSION['message'])) {
     <title>Logg Inn - Kundeservice</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
+<style>
+    <style>
+
+footer {
+  background-color: #333;
+  color: #fff;
+  /* position: fixed; */
+  bottom: 0;
+  left: 0; 
+  width: 100%;
+}
+
+.footer-container {
+    background-color: rgba(51, 51, 51, 0.9); /* Darker background for footer */
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.footer-links ul {
+    display: flex;
+    padding: 0;
+    list-style-type: none;
+}
+
+.footer-links ul li {
+    margin: 10px;
+    display: flex;
+    align-items: center; 
+}
+
+.footer-links ul li img {
+    width: calc(40px + 45px);
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.footer-links ul li a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1rem;
+   text-shadow: none; /* No shadow needed due to sufficient contrast */
+}
+
+.footer-links ul li a:hover {
+    text-decoration: underline;
+}
+</style>
+</style>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand" href="https://fjelltg.no/">&copy; 2024 Fjell</a>
+        <a class="navbar-brand" href="../index.html">&copy; 2024 Nordpublica</a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -90,12 +143,42 @@ if (isset($_SESSION['message'])) {
     </div>
 </div>
 
-<footer class="footer bg-primary text-white mt-5">
-    <div class="container text-center py-3">
-        <p>&copy; 2024 Fjell</p>
-    </div>
-</footer>
 
+<footer>
+      <div class="footer-container">
+          <div class="footer-contact">
+              <h4>Contact Us</h4>
+              <p>Email: <br> mihailokoprivica480@gmail.com</p>
+              <p>Phone: <br> (+47) 973 26 424</p>
+              <p>Address: <br> Sinsenterrassen 14, 0574 Oslo, Norway
+              </p>
+          </div>
+          <div class="footer-designer">
+              <h4>Designed by</h4>
+              <p>Designer Name</p>
+          </div>
+          <div class="footer-links">
+              <h4>Explore</h4>
+              <ul class="foot-ul">
+                  <li class="foot-li">
+                      <a href="../pages/calMAP.html">
+                          <img src="../pics/NEW_CALENDAR-.png" alt="Calendar Icon"> Calendar
+                      </a>
+                  </li>
+                  <li class="foot-li">
+                      <a href="../pages/weather.html">
+                          <img src="../pics/weathercolorful-.png" alt="Weather Icon"> Weather
+                      </a>
+                  </li>
+                  <li class="foot-li">
+                      <a href="../pages/sports.html">
+                          <img src="../pics/sportcolorfulTEST-.png" alt="Sports Icon"> Sports News
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </footer>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
