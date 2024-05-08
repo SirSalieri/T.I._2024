@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand" href="https://fjelltg.no/">&copy; 2024 Fjell</a>
+        <a class="navbar-brand" href="#">&copy; 2024 Nordpublica</a>
         <div class="ml-auto">
             <a href="../LOG_IN_SYSTEM/logout.php" class="btn btn-outline-light">Logg ut</a>
         </div>
@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     Sjekk status på henvendelsen
                 </div>
                 <div class="card-body">
-                    <form action="/../TICKETS/templates/check_status.php" method="post">
+                    <form action="../templates/check_status.php" method="post">
                         <div class="form-group">
                             <label for="ticket_number">Saksnummer</label>
                             <input type="text" class="form-control" id="ticket_number" name="ticket_number" required>
@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <footer class="footer bg-primary text-white mt-4">
     <div class="container text-center py-3">
-        <p>&copy; 2024 Fjell</p>
+        <p>&copy; 2024 Nordpublica</p>
     </div>
 </footer>
 

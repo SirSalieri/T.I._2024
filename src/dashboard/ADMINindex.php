@@ -1,5 +1,5 @@
 // index.php
 <?php
-header("Location: \TICKETS\dashboard\admin_panel.php");
+header("Location: \TERMINOPPGAVE_INNLEVERING\dashboard\admin_panel.php");
 exit;
 ?>

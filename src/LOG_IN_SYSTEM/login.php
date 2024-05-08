@@ -3,19 +3,26 @@ session_start();
 require_once '../includes/connect.php';
 
 $message = '';
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
+    $login = $_POST['login']; // Could be either an email or a username
     $password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
-    $stmt->bindValue(':email', $email);
+    // Determine if login input is an email or username
+    if (filter_var($login, FILTER_VALIDATE_EMAIL)) {
+        $query = "SELECT * FROM users WHERE email = :login";
+    } else {
+        $query = "SELECT * FROM users WHERE username = :login";
+    }
+
+    $stmt = $conn->prepare($query);
+    $stmt->bindValue(':login', $login);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['email'] = $user['email'];
+        $_SESSION['username'] = $user['username']; // Ensure username is also saved in session if needed
         $_SESSION['role'] = $user['role']; 
 
         if ($_SESSION['role'] === 'admin') {
@@ -25,14 +32,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         exit;
     } else {
-        $message = 'Login feilet: Ugyldig brukernavn eller passord';
+        $message = 'Login feilet: Ugyldig e-post, brukernavn eller passord';
     }
 }
 
-if (isset($_SESSION['message'])) {
-    $message = $_SESSION['message'];
-    unset($_SESSION['message']);
-}
+// if (isset($_SESSION['message'])) {
+//     $message = $_SESSION['message'];
+//     unset($_SESSION['message']);
+// }
 ?>
 
 
@@ -45,8 +52,18 @@ if (isset($_SESSION['message'])) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <style>
-    <style>
+.navbar {
+    background-color: rgba(163, 109, 109, 0.8); /* Custom color */
+    margin-bottom: 20px;
+}
 
+.navbar .navbar-brand, .navbar a {
+    color: #fff; 
+}
+
+.navbar a:hover {
+    text-decoration: underline; /* Hover effect */
+}
 footer {
   background-color: #333;
   color: #fff;
@@ -95,12 +112,12 @@ footer {
 .footer-links ul li a:hover {
     text-decoration: underline;
 }
-</style>
+
 </style>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(163, 109, 109, 0.8);">    
+<div class="container">
         <a class="navbar-brand" href="../index.html">&copy; 2024 Nordpublica</a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
@@ -125,9 +142,10 @@ footer {
                     <?php endif; ?>
                     <form action="handle_login.php" method="post">
                         <div class="form-group">
-                            <label for="email">E-post</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <label for="login">Email eller Brukernavn</label>
+                            <input type="text" class="form-control" id="login" name="login" required>
                         </div>
+
                         <div class="form-group">
                             <label for="password">Passord</label>
                             <input type="password" class="form-control" id="password" name="password" required>

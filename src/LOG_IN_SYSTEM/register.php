@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . '/../../vendor/autoload.php';
+require_once '../includes/connect.php';
+
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../support');
 $dotenv->load();
@@ -40,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$conn = null; // Close the connection
+$conn = null;
 ?>
 <!DOCTYPE html>
 <html lang="no">
@@ -104,7 +106,7 @@ footer {
 </style>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(163, 109, 109, 0.8);">    
     <div class="container">
         <a class="navbar-brand" href="../index.html">&copy; 2024 Nordpublica</a>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -123,6 +125,7 @@ footer {
             <div class="card shadow">
                 <div class="card-body">
                     <h3 class="card-title text-center mb-4">Registrer Deg</h3>
+                    <form action="handle_register.php" method="post">
                     <form action="handle_register.php" method="post">
                         <div class="form-group">
                             <label for="name">Navn</label>
@@ -143,6 +146,10 @@ footer {
                         <div class="form-group">
                             <label for="password">Passord</label>
                             <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password_confirm">Bekreft Passord</label>
+                            <input type="password" class="form-control" id="password_confirm" name="password_confirm" required>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Registrer</button>
                     </form>

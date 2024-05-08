@@ -1,134 +1,60 @@
-<?php
-session_start();
-
-function handleUnauthorizedAccess() {
-    header("Location: unauthorized_access.php");
-    exit();
-}
-
-// Function to handle login redirection
-function redirectToLogin() {
-    header("Location: avatars.html");
-    exit();
-}
-
-// Check if the user is logged in
-function checkLoggedIn() {
-    if (!isset($_SESSION['role'])) {
-        redirectToLogin();
-    }
-}
-
-// Check user roles for access control
-function checkUserRole() {
-    if ($_SESSION['role'] !== 'admin') {
-        handleUnauthorizedAccess();
-    }
-}
-
-// Bypass role checks based on a specific condition (e.g., a GET parameter)
-if (isset($_GET['admin_access']) && $_GET['admin_access'] === 'true') {
-    // If the condition is met, set the user as an admin for testing purposes
-    $_SESSION['role'] = 'admin';
-}
-
-try {
-    checkLoggedIn();
-    checkUserRole();
-} catch (Exception $e) {
-    header("Location: error_page.php");
-    error_log($e->getMessage());
-    echo "An error occurred. Please try again later.";
-    exit();
-}
-header("Location: avatars.html?access=false");
-exit();
-header("Location: admin_panel.php");
-exit();
+<?
+// require_once 'authentication.php';
+require_once __DIR__ . '/vendor/autoload.php';
 ?>
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .button-container {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
-<style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    background-color: #333;
-    color: white;
-    padding: 10px 0;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-main {
-    padding: 20px;
-}
-
-.admin-functionalities {
-    margin-top: 20px;
-}
-
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #333;
-    color: white;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-
-</style>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="admin_dashboard.php">Dashboard</a></li>
-                <li><a href="manage_users.php">Manage Users</a></li>
-                <li><a href="edit_article.php">Edit Articles</a></li>
-                <li><a href="add_article.php">Add New Articles</a></li>
-                <li><a href="remove_article.php">Remove Articles</a></li>
-                <li><a href="last_login.php">Check User's activity</a></li>
-                <li><a href="index.html">Home</a></li>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="../LOG_IN_SYSTEM/logout.php" class="btn btn-outline-light">LOGG UT</a>
+                </li>
             </ul>
-        </nav>
-    </header>
-
-    <main>
-        <h1>Welcome to the Admin Panel!</h1>
-        <div class="admin-functionalities">
-            <button onclick="openUserManagement()">Manage Users</button>
-            <button onclick="openArticleManagement()">Manage Articles</button>
         </div>
-    </main>
+    </div>
+</nav>
 
-    <footer>
-        <!-- Footer content -->
-        <p>&copy; 2023 Your Company</p>
-    </footer>
-    <script src="admin_scripts.js"></script>
+<div class="container mt-5 text-center">
+    <h1>Welcome to the Admin Panel!</h1>
+    <div class="row mt-4 justify-content-center">
+        <div class="col-md-4 button-container">
+            <a href="/TERMINOPPGAVE_INNLEVERING/templates/management.php" class="btn btn-primary btn-lg btn-block">Manage Users</a>
+        </div>
+        <div class="col-md-4 button-container">
+            <a href="/TERMINOPPGAVE_INNLEVERING/templates/articles.php" class="btn btn-secondary btn-lg btn-block">Manage Articles</a>
+        </div>
+        <div class="col-md-4 button-container">
+            <a href="/TERMINOPPGAVE_INNLEVERING/templates/last_login.php" class="btn btn-success btn-lg btn-block">Activity Tracker</a>
+        </div>
+        <div class="col-md-4 button-container">
+            <a href="/TERMINOPPGAVE_INNLEVERING/templates/tickets.php" class="btn btn-info btn-lg btn-block">Manage Tickets</a>
+        </div>
+    </div>
+</div>
+
+<footer class="footer bg-primary text-white mt-4">
+    <div class="container text-center py-3">
+        <p>&copy; 2024 Nordpublica</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 </html>
