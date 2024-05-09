@@ -16,7 +16,7 @@ $users = $conn->query($query);
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="/../myadmin/dashboard/admin_panel.php">Back to Dashboard</a>
+        <a class="navbar-brand" href="../dashboard/admin_panel.php">Back to Dashboard</a>
         <!-- Navbar content here -->
     </nav>
 

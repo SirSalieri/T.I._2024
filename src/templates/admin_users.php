@@ -24,7 +24,7 @@ $admin_users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="admin_dashboard.php">Admin's Panel</a>
+                <a class="nav-item nav-link active" href="../dashboard/admin_panel.php">Admin's Panel</a>
                 <a class="nav-item nav-link" href="manage_users.php">Users</a>
                 <a class="nav-item nav-link" href="edit_article.php">Articles</a>
                 <a class="nav-item nav-link" href="tracker.php">Activity Tracker</a>

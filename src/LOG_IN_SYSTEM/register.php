@@ -51,9 +51,59 @@ $conn = null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrer - Nordpublica</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
 </head>
 
 <style>
+
+header {
+  width: 100%;
+  color: white;
+  background-color: #333; 
+  text-align: center;
+  padding: 10px 0;
+}
+
+.logo {
+  padding: 5px;
+  background-color: transparent;
+  border-radius: 5px;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: center; 
+  background-color: #444;
+  padding: 10px 0;
+  width: 100%; 
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  margin: 0 15px;
+  font-size: 1.2rem;
+}
+
+nav a:hover {
+  color: #dddddd; 
+  text-decoration: underline;
+}
+
+.slider-container {
+  width: 100%;
+  overflow: hidden;
+  max-height: 300px; 
+}
+
+.slider img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+}
 
 footer {
   background-color: #333;
@@ -106,18 +156,23 @@ footer {
 </style>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(163, 109, 109, 0.8);">    
-    <div class="container">
-        <a class="navbar-brand" href="../index.html">&copy; 2024 Nordpublica</a>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="login.php" class="btn btn-outline-light">Logg Inn</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<header class="mainheader">
+      <div class="logo">
+        <h1>NordPublica</h1>
+      </div>
+      <div class="slider-container">
+          <div class="slider">
+              <img src="../pics/road.jpg" alt="Image 1">
+          </div>
+      </div>
+    <nav>
+        <a href="../index.html"> Home </a>
+        <a href="../pages/about.php">About us</a>
+        <a href="../pages/weather.html">Weather information</a>
+        <a href="../pages/calMAP.html">Calendar</a>
+        <a href="../pages/contact.html">Contact us</a>
+    </nav>
+  </header>
 
 <div class="container mt-5">
     <div class="row">

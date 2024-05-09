@@ -8,75 +8,50 @@
 </head>
 
 <style>
+
 body {
-    min-height: 100vh; /* Set minimum height of the viewport */
+    min-height: 100vh;
     background-color: #f2f2f2;
     font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Set minimum height of the viewport */
-    margin: 0; /* Reset default body margin */
+    margin: 0;
 }
 
-.slider-container {
-  position: fixed;
-  top: 0;
-  left: 0;
+header {
   width: 100%;
-  height: 100%;
-  z-index: -111; 
-}
-
-.slider img {
-  width: 100%;
-  height: auto;
-}
-
-.mainheader {
-background-color: #333;
-color: white;
-text-align: center;
-padding: 20px 0;
+  color: white;
+  background-color: #333; 
+  text-align: center;
+  padding: 10px 0;
 }
 
 .logo {
   padding: 5px;
-  background-color: rgba(163, 109, 109, 0.8);
+  background-color: transparent;
   border-radius: 5px;
   font-family: 'Orbitron', sans-serif;
+  text-align: center;
 }
 
 nav {
-background-color: #333;
-color: white;
-padding: 10px;
-text-align: center;
-font-size: 1.3rem;
-
+  display: flex;
+  justify-content: center; 
+  background-color: #444;
+  padding: 10px 0;
+  width: 100%; 
 }
+
 nav a {
-color: white;
-text-decoration: none;
-margin: 0 10px;
-}
-section {
-padding: 20px;
-text-align: center;
+  text-decoration: none;
+  color: white;
+  margin: 0 15px;
+  font-size: 1.2rem;
 }
 
-img {
-max-width: 100%;
-height: auto;
-}
-
-h2 {
-  font-size: 20px;
-  margin-top: 10px;
-}
-
-h1 {
-    font-size: 24px;
-    margin: 0 0 10px 0;
+nav a:hover {
+  color: #dddddd; 
+  text-decoration: underline;
 }
 
 footer {
@@ -87,7 +62,7 @@ footer {
 }
 
 .main {
-    flex: 1; /* Occupy the remaining space */
+    flex: 1; 
     display: flex;
     flex-direction: column;
 }
@@ -135,13 +110,7 @@ footer {
         <div class="logo">
             <h1>NordPublica</h1>
         </div>
-        <div class="slider-container">
-            <div class="slider fade">
-                <img src="pics\44453.jpg" alt="Image 1">
-            </div>
-        </div>
     </header>
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="../index.html" style="font-family: Pacifico;">Back to Home</a>
         <h2 class="navbar-title" style="color: white; font-style: Tillana;">Weather info</h2>
@@ -167,7 +136,7 @@ footer {
         </div>
     </nav>
     <main>
-        <iframe src="https://www.accuweather.com" frameborder="0" width="100%" height="600vh"></iframe>
+        <iframe src="https://www.accuweather.com" frameborder="0" width="100%" height="900vh"></iframe>
     </main>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

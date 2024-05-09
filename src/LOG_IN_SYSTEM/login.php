@@ -1,45 +1,7 @@
 <?php
 session_start();
-require_once '../includes/connect.php';
-
-$message = '';
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $login = $_POST['login']; // Could be either an email or a username
-    $password = $_POST['password'];
-
-    // Determine if login input is an email or username
-    if (filter_var($login, FILTER_VALIDATE_EMAIL)) {
-        $query = "SELECT * FROM users WHERE email = :login";
-    } else {
-        $query = "SELECT * FROM users WHERE username = :login";
-    }
-
-    $stmt = $conn->prepare($query);
-    $stmt->bindValue(':login', $login);
-    $stmt->execute();
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($user && password_verify($password, $user['password'])) {
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['email'] = $user['email'];
-        $_SESSION['username'] = $user['username']; // Ensure username is also saved in session if needed
-        $_SESSION['role'] = $user['role']; 
-
-        if ($_SESSION['role'] === 'admin') {
-            header("Location: admin_index.php");
-        } else {
-            header("Location: login_kunde.php"); 
-        }
-        exit;
-    } else {
-        $message = 'Login feilet: Ugyldig e-post, brukernavn eller passord';
-    }
-}
-
-// if (isset($_SESSION['message'])) {
-//     $message = $_SESSION['message'];
-//     unset($_SESSION['message']);
-// }
+$message = $_SESSION['message'] ?? '';
+unset($_SESSION['message']); 
 ?>
 
 
@@ -50,20 +12,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logg Inn - Kundeservice</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
 </head>
 <style>
-.navbar {
-    background-color: rgba(163, 109, 109, 0.8); /* Custom color */
-    margin-bottom: 20px;
+    
+header {
+  width: 100%;
+  color: white;
+  background-color: #333; 
+  text-align: center;
+  padding: 10px 0;
 }
 
-.navbar .navbar-brand, .navbar a {
-    color: #fff; 
+.logo {
+  padding: 5px;
+  background-color: transparent;
+  border-radius: 5px;
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
 }
 
-.navbar a:hover {
-    text-decoration: underline; /* Hover effect */
+nav {
+  display: flex;
+  justify-content: center; 
+  background-color: #444;
+  padding: 10px 0;
+  width: 100%; 
 }
+
+nav a {
+  text-decoration: none;
+  color: white;
+  margin: 0 15px;
+  font-size: 1.2rem;
+}
+
+nav a:hover {
+  color: #dddddd; 
+  text-decoration: underline;
+}
+
+.slider-container {
+  width: 100%;
+  overflow: hidden;
+  max-height: 300px; 
+}
+
+.slider img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
 footer {
   background-color: #333;
   color: #fff;
@@ -106,7 +107,7 @@ footer {
     font-weight: bold;
     text-decoration: none;
     font-size: 1rem;
-   text-shadow: none; /* No shadow needed due to sufficient contrast */
+    text-shadow: none; /* No shadow needed due to sufficient contrast */
 }
 
 .footer-links ul li a:hover {
@@ -115,19 +116,23 @@ footer {
 
 </style>
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgba(163, 109, 109, 0.8);">    
-<div class="container">
-        <a class="navbar-brand" href="../index.html">&copy; 2024 Nordpublica</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="register.php" class="btn btn-outline-light">Registrer deg!</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<header class="mainheader">
+      <div class="logo">
+        <h1>NordPublica</h1>
+      </div>
+      <div class="slider-container">
+          <div class="slider">
+              <img src="../pics/road.jpg" alt="Image 1">
+          </div>
+      </div>
+    <nav>
+        <a href="../index.html"> Home </a>
+        <a href="../pages/about.php">About us</a>
+        <a href="../pages/weather.html">Weather information</a>
+        <a href="../pages/calMAP.html">Calendar</a>
+        <a href="../pages/contact.html">Contact us</a>
+    </nav>
+  </header>
 
 <div class="container mt-5">
     <div class="row">

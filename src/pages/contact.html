@@ -47,47 +47,40 @@ body {
   }
 }
 
-.mainheader {
-background-color: #333;
-color: white;
-text-align: center;
-padding: 20px 0;
+header {
+  width: 100%;
+  color: white;
+  background-color: #333; 
+  text-align: center;
+  padding: 10px 0;
 }
 
 .logo {
   padding: 5px;
-  background-color: rgba(163, 109, 109, 0.8);
+  background-color: transparent;
   border-radius: 5px;
   font-family: 'Orbitron', sans-serif;
+  text-align: center;
 }
-
 
 nav {
-background-color: #333;
-color: white;
-padding: 10px;
-text-align: center;
-font-size: 1.3rem;
-
+  display: flex;
+  justify-content: center; 
+  background-color: #444;
+  padding: 10px 0;
+  width: 100%; 
 }
+
 nav a {
-color: white;
-text-decoration: none;
-margin: 0 10px;
-}
-section {
-padding: 20px;
-text-align: center;
+  text-decoration: none;
+  color: white;
+  margin: 0 15px;
+  font-size: 1.2rem;
 }
 
-img {
-max-width: 100%;
-height: auto;
-}
-
-h2 {
-  font-size: 20px;
-  margin-top: 10px;
+nav a:hover {
+  color: #dddddd; 
+  text-decoration: underline;
 }
 
 .container_contact {
@@ -252,7 +245,7 @@ footer {
       <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="../index.html">Home</a>
               </li>
               <li class="nav-item">
                   <a class="nav-link" href="calMAP.html">Calendar</a>

@@ -19,7 +19,7 @@ require_once __DIR__ . '/../includes/connect.php';
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="admin_dashboard.php">Dashboard</a>
+                <a class="nav-item nav-link active" href="../dashboard/admin_panel.php">Dashboard</a>
                 <a class="nav-item nav-link" href="manage_users.php">Users</a>
                 <a class="nav-item nav-link" href="edit_article.php">Articles</a>
                 <a class="nav-item nav-link" href="tracker.php">Activity Tracker</a>

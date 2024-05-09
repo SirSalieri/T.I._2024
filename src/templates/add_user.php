@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if ($successMessage): ?>
             <div class="alert alert-success" role="alert">
                 <?php echo $successMessage; ?>
-                <a href="/../myadmin/dashboard/admin_panel.php" class="btn btn-primary">Back to Dashboard</a>
+                <a href="../dashboard/admin_panel.php" class="btn btn-primary">Back to Dashboard</a>
             </div>
         <?php endif; ?>
 

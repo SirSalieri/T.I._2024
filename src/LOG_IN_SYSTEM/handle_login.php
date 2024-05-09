@@ -2,23 +2,24 @@
 session_start();
 require_once '../includes/connect.php';
 
-$message = '';
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
+    $login = $_POST['login'];
     $password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
-    $stmt->bindValue(':email', $email);
+    if (filter_var($login, FILTER_VALIDATE_EMAIL)) {
+        $stmt = $conn->prepare("SELECT * FROM users WHERE email = :login");
+    } else {
+        $stmt = $conn->prepare("SELECT * FROM users WHERE username = :login");
+    }
+
+    $stmt->bindValue(':login', $login);
     $stmt->execute();
-    
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user && password_verify($password, $user['password'])) {
-        // Lagre brukerinformasjon i session
         $_SESSION['user_id'] = $user['id'];
-        $_SESSION['user_name'] = $user['name']; 
-        $_SESSION['user_surname'] = $user['surname']; 
+        $_SESSION['user_name'] = $user['name'];
+        $_SESSION['user_surname'] = $user['surname'];
         $_SESSION['email'] = $user['email'];
         $_SESSION['role'] = $user['role'];
 

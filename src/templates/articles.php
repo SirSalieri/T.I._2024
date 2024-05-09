@@ -29,7 +29,7 @@ require_once __DIR__ . '/../includes/connect.php';
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/../myadmin/dashboard/admin_panel.php">Admin's Panel</a>
+                    <a class="nav-link" href="../dashboard/admin_panel.php">Admin's Panel</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="manage_users.php">Users</a>
