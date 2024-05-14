@@ -22,12 +22,12 @@ require_once __DIR__ . '/vendor/autoload.php';
 
         .header-content {
             display: flex;
-            justify-content: space-between; /* Aligns children to the edges */
+            justify-content: space-between; 
             align-items: center;
         }
 
         .logo {
-            margin: 0 auto; /* Centers the logo within the flex container */
+            margin: 0 auto;
             padding: 5px;
             background-color: transparent;
             border-radius: 5px;
@@ -52,7 +52,7 @@ require_once __DIR__ . '/vendor/autoload.php';
             margin-bottom: 20px;
         }
         footer {
-            background-color: rgba(51, 51, 51, 0.9); /* Darker background for footer */
+            background-color: rgba(51, 51, 51, 0.9);
             color: #fff;
             bottom: 0;
             left: 0; 
