@@ -11,7 +11,8 @@ require_once __DIR__ . '/vendor/autoload.php';
     <title>Admin Panel</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
-    <style>
+</head>
+<style>
         header {
             width: 100%;
             color: white;
@@ -67,7 +68,6 @@ require_once __DIR__ . '/vendor/autoload.php';
             text-align: center;
         }
     </style>
-</head>
 <body>
 <header class="mainheader">
     <div class="header-content">
@@ -97,9 +97,6 @@ require_once __DIR__ . '/vendor/autoload.php';
         <div class="col-md-4 button-container">
             <a href="../templates/last_login.php" class="btn btn-success btn-lg btn-block">Activity Tracker</a>
         </div>
-        <div class="col-md-4 button-container">
-            <a href="../templates/tickets.php" class="btn btn-info btn-lg btn-block">Manage Tickets</a>
-        </div>
     </div>
 </div>
 <footer>
@@ -109,9 +106,7 @@ require_once __DIR__ . '/vendor/autoload.php';
           <p>Designer Name</p>
       </div>
   </div>
-</div>
 </footer>
-
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>

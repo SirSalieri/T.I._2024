@@ -34,45 +34,134 @@ if ($message) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Article</title>
-    <!-- Minimal styling -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 5px;
-        }
-        .form-control {
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            width: 100%;
-        }
-        .form-control textarea {
-            resize: vertical;
-        }
-        .btn {
-            padding: 10px 15px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background-color: #f4f4f4;
+    }
+    .container {
+        background-color: #fff;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 5px;
+    }
+    .form-control {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        width: 100%;
+    }
+    .form-control textarea {
+        resize: vertical;
+    }
+    .btn {
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .btn:hover {
+        background-color: #0056b3;
+    }
+
+    header {
+        width: 100%;
+        color: white;
+        background-color: #333;
+        padding: 10px 0;
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between; /* Aligns children to the edges */
+        align-items: center;
+    }
+
+    .logo {
+        margin: 0 auto; /* Centers the logo within the flex container */
+        padding: 5px;
+        background-color: transparent;
+        border-radius: 5px;
+        font-family: 'Orbitron', sans-serif;
+        text-align: center;
+    }
+
+    .slider-container {
+        width: 100%;
+        overflow: hidden;
+        max-height: 300px;
+    }
+
+    .slider img {
+        width: 100%;
+        max-height: 300px;
+        object-fit: cover;
+        display: block;
+    }
+
+    .button-container {
+        margin-bottom: 20px;
+    }
+    footer {
+        background-color: rgba(51, 51, 51, 0.9); 
+        color: #fff;
+        bottom: 0;
+        left: 0; 
+        width: 100%;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        min-height: 20vh;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+    }
+
+</style>
 <body>
+    <header class="mainheader">
+        <div class="header-content">
+            <div class="logo">
+                <h1>NordPublica</h1>
+            </div>
+            <div class="logout">
+                <a href="../LOG_IN_SYSTEM/logout.php" class="btn btn-outline-light">LOGG UT</a>
+            </div>
+        </div>
+        <div class="slider-container">
+            <div class="slider">
+                <img src="../pics/road.jpg" alt="Image 1">
+            </div>
+        </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="../dashboard/admin_panel.php">Back to Dashboard!</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+ 
+                <li class="nav-item">
+                    <a class="nav-link" href="management.php">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="last_login.php">Tracker<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="container">
         <h2>Add New Article</h2>
         <form action="add_article.php" method="post">
@@ -84,5 +173,19 @@ if ($message) {
             <button type="submit" class="btn">Add Article</button>
         </form>
     </div>
+    <footer>
+    <div class="footer-container">
+        <div class="footer-designer">
+            <h4>Designed by</h4>
+            <p>Designer Name</p>
+        </div>
+    </div>
+    </div>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 </html>
