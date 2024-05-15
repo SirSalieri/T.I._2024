@@ -78,15 +78,16 @@
             </div>
         </div>
     </header>
+
     <div class="container mt-5">
-        <h2 class="mb-4">Preview Article</h2>
-        <article>
-            <h3><?php echo htmlspecialchars($_POST['title']); ?></h3>
-            <p><?php echo nl2br(htmlspecialchars($_POST['content'])); ?></p>
-            <p><strong>Category:</strong> <?php echo htmlspecialchars($_POST['category']); ?></p>
-            <img src="<?php echo htmlspecialchars($_POST['image_url']); ?>" alt="Article Image" style="max-width: 100%;">
-        </article>
+        <h2 class="mb-4"><?php echo htmlspecialchars($_POST['title']); ?></h2>
+        <div class="content">
+            <?php echo $_POST['content']; ?>
+        </div>
+        <p><strong>Category:</strong> <?php echo htmlspecialchars($_POST['category']); ?></p>
+        <img src="<?php echo htmlspecialchars($_POST['image_url']); ?>" alt="Article Image" style="max-width: 100%;">
     </div>
+    
     <footer>
         <div class="footer-container">
             <div class="footer-designer">

@@ -172,12 +172,14 @@
                 <button type="submit" class="btn btn-primary">Update</button>
                 <button type="button" class="btn btn-secondary" onclick="submitPreview()">Preview</button>
             </form>
+            
             <form id="preview-form" action="preview.php" method="post" target="_blank">
                 <input type="hidden" name="title" id="preview-title">
                 <input type="hidden" name="content" id="preview-content">
                 <input type="hidden" name="category" id="preview-category">
                 <input type="hidden" name="image_url" id="preview-image-url">
             </form>
+
             <script>
             function submitPreview() {
                 document.getElementById('preview-title').value = document.getElementById('title').value;
