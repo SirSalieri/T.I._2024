@@ -7,66 +7,72 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
     <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
+    <style>
+        header {
+            width: 100%;
+            color: white;
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            margin: 0 auto;
+            padding: 5px;
+            background-color: transparent;
+            border-radius: 5px;
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+        }
+
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+            max-height: 300px;
+        }
+
+        .slider img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .button-container {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: rgba(51, 51, 51, 0.9);
+            color: #fff;
+            bottom: 0;
+            left: 0; 
+            width: 100%;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            min-height: 20vh;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .editor-container {
+            margin-bottom: 20px;
+        }
+
+        .back-link {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
-
-<style>
-    header {
-        width: 100%;
-        color: white;
-        background-color: #333;
-        padding: 10px 0;
-    }
-
-    .header-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .logo {
-        margin: 0 auto;
-        padding: 5px;
-        background-color: transparent;
-        border-radius: 5px;
-        font-family: 'Orbitron', sans-serif;
-        text-align: center;
-    }
-
-    .slider-container {
-        width: 100%;
-        overflow: hidden;
-        max-height: 300px;
-    }
-
-    .slider img {
-        width: 100%;
-        max-height: 300px;
-        object-fit: cover;
-        display: block;
-    }
-
-    .button-container {
-        margin-bottom: 20px;
-    }
-
-    footer {
-        background-color: rgba(51, 51, 51, 0.9);
-        color: #fff;
-        bottom: 0;
-        left: 0; 
-        width: 100%;
-    }
-
-    .footer-container {
-        max-width: 1200px;
-        min-height: 20vh;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-around;
-        text-align: center;
-    }
-</style>
-
 <body>
     <header class="mainheader">
         <div class="header-content text-center">
@@ -85,11 +91,16 @@
     </header>
 
     <div class="container mt-5" style="min-height: 40vh;">
+        <div class="back-link">
+            <a href="articles.php" class="btn btn-secondary">&larr; Back to Articles Dashboard</a>
+        </div>
+        
         <?php
-        // Include the database connection file
+        session_start();
         require_once '../includes/connect.php';
 
-        // Function to fetch all articles from the database
+        $message = '';
+
         function fetch_all_articles($conn) {
             $sql = "SELECT id, title, category FROM articles";
             $stmt = $conn->prepare($sql);
@@ -119,16 +130,15 @@
             $article_id = $_GET['id'];
             $article_data = fetch_article_details_from_database($article_id, $conn);
             
-            // Check if the form is submitted for updating the article
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                // Get the posted data
+
                 $article_id = $_POST['article_id'];
                 $title = $_POST['title'];
                 $content = $_POST['content'];
                 $category = $_POST['category'];
                 $image_url = $_POST['image_url'];
 
-                // Update the article in the database
+
                 $sql = "UPDATE articles SET title = :title, content = :content, category = :category, image_url = :image_url WHERE id = :id";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam(':title', $title);
@@ -156,7 +166,7 @@
                 
                 <div class="form-group">
                     <label for="content">Content:</label>
-                    <textarea class="form-control" id="content" name="content" rows="4" required><?php echo htmlspecialchars($article_data['content']); ?></textarea>
+                    <textarea class="form-control" id="content" name="content" rows="10" required><?php echo htmlspecialchars($article_data['content']); ?></textarea>
                 </div>
                 
                 <div class="form-group">
@@ -191,7 +201,32 @@
 
             document.addEventListener('DOMContentLoaded', function() {
                 ClassicEditor
-                    .create(document.querySelector('#content'))
+                    .create(document.querySelector('#content'), {
+                        toolbar: {
+                            items: [
+                                'heading', '|',
+                                'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|',
+                                'outdent', 'indent', '|',
+                                'blockQuote', 'insertTable', 'mediaEmbed', 'undo', 'redo', '|',
+                                'alignment', 'fontColor', 'fontBackgroundColor', 'fontFamily', 'fontSize', '|',
+                                'imageUpload'
+                            ],
+                            shouldNotGroupWhenFull: true
+                        },
+                        image: {
+                            toolbar: [
+                                'imageTextAlternative', 'imageStyle:full', 'imageStyle:side'
+                            ]
+                        },
+                        table: {
+                            contentToolbar: [
+                                'tableColumn', 'tableRow', 'mergeTableCells'
+                            ]
+                        },
+                        mediaEmbed: {
+                            previewsInData: true
+                        }
+                    })
                     .catch(error => {
                         console.error(error);
                     });
@@ -206,7 +241,6 @@
             } else {
                 echo '<div class="alert alert-danger" role="alert">Error deleting article.</div>';
             }
-            // Redirect to the article list after deletion
             header("Location: edit_article.php");
             exit;
         } else {
