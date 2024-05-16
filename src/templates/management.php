@@ -96,7 +96,7 @@ header {
         </div>
     </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="../dashboard/admin_panel.php">Admin's Panel</a>
+        <a class="navbar-brand" href="../dashboard/admin_panel.php">Back to Dashboard!</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

@@ -89,12 +89,6 @@ require_once __DIR__ . '/../includes/connect.php';
             <a href="../LOG_IN_SYSTEM/logout.php" class="btn btn-outline-light">LOGG UT</a>
         </div>
     </div>
-    <div class="slider-container">
-        <div class="slider">
-            <img src="../pics/road.jpg" alt="Image 1">
-        </div>
-    </div>
-</header>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="../dashboard/admin_panel.php">Back to Dashboard!</a>
@@ -112,6 +106,15 @@ require_once __DIR__ . '/../includes/connect.php';
             </ul>
         </div>
     </nav>
+
+    <div class="slider-container">
+        <div class="slider">
+            <img src="../pics/road.jpg" alt="Image 1">
+        </div>
+    </div>
+</header>
+
+
 
     <div class="container mt-5">
         <h1 class="mb-4">Articles</h1>

@@ -91,12 +91,7 @@ header {
             <a href="../LOG_IN_SYSTEM/logout.php" class="btn btn-outline-light">LOGG UT</a>
         </div>
     </div>
-    <div class="slider-container">
-        <div class="slider">
-            <img src="../pics/road.jpg" alt="Image 1">
-        </div>
-    </div>
-</header>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="../dashboard/admin_panel.php">Back to Dashboard!</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -114,6 +109,14 @@ header {
             </ul>
         </div>
     </nav>
+
+    <div class="slider-container">
+        <div class="slider">
+            <img src="../pics/road.jpg" alt="Image 1">
+        </div>
+    </div>
+</header>
+
     <div class="container mt-4">
         <h2>User Activity Tracker</h2>
         <table class="table table-striped">

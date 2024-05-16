@@ -9,61 +9,62 @@
 </head>
 
 <style>
-        header {
-            width: 100%;
-            color: white;
-            background-color: #333;
-            padding: 10px 0;
-        }
+    header {
+        width: 100%;
+        color: white;
+        background-color: #333;
+        padding: 10px 0;
+    }
 
-        .header-content {
-            display: flex;
-            justify-content: space-between; 
-            align-items: center;
-        }
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-        .logo {
-            margin: 0 auto;
-            padding: 5px;
-            background-color: transparent;
-            border-radius: 5px;
-            font-family: 'Orbitron', sans-serif;
-            text-align: center;
-        }
+    .logo {
+        margin: 0 auto;
+        padding: 5px;
+        background-color: transparent;
+        border-radius: 5px;
+        font-family: 'Orbitron', sans-serif;
+        text-align: center;
+    }
 
-        .slider-container {
-            width: 100%;
-            overflow: hidden;
-            max-height: 300px;
-        }
+    .slider-container {
+        width: 100%;
+        overflow: hidden;
+        max-height: 300px;
+    }
 
-        .slider img {
-            width: 100%;
-            max-height: 300px;
-            object-fit: cover;
-            display: block;
-        }
+    .slider img {
+        width: 100%;
+        max-height: 300px;
+        object-fit: cover;
+        display: block;
+    }
 
-        .button-container {
-            margin-bottom: 20px;
-        }
-        footer {
-            background-color: rgba(51, 51, 51, 0.9);
-            color: #fff;
-            bottom: 0;
-            left: 0; 
-            width: 100%;
-        }
+    .content {
+        margin-top: 20px;
+    }
 
-        .footer-container {
-            max-width: 1200px;
-            min-height: 20vh;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-        }
-    </style>
+    footer {
+        background-color: rgba(51, 51, 51, 0.9);
+        color: #fff;
+        bottom: 0;
+        left: 0; 
+        width: 100%;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        min-height: 20vh;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+    }
+</style>
 
 <body>
     <header class="mainheader">
@@ -81,11 +82,12 @@
 
     <div class="container mt-5">
         <h2 class="mb-4"><?php echo htmlspecialchars($_POST['title']); ?></h2>
+        <p><strong>Category:</strong> <?php echo htmlspecialchars($_POST['category']); ?></p>
+        <p><strong>Publish Date:</strong> <?php echo htmlspecialchars($_POST['publish_date']); ?></p>
+        <img src="<?php echo htmlspecialchars($_POST['image_url']); ?>" alt="Article Image" style="max-width: 100%;">
         <div class="content">
             <?php echo $_POST['content']; ?>
         </div>
-        <p><strong>Category:</strong> <?php echo htmlspecialchars($_POST['category']); ?></p>
-        <img src="<?php echo htmlspecialchars($_POST['image_url']); ?>" alt="Article Image" style="max-width: 100%;">
     </div>
     
     <footer>
