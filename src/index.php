@@ -1,5 +1,4 @@
 <?php
-// If the request is made from our space preview functionality then turn on PHP error reporting
 if (isset($_SERVER['HTTP_X_FORWARDED_URL']) && strpos($_SERVER['HTTP_X_FORWARDED_URL'], '.w3spaces-preview.com/') !== false) {
   ini_set('display_errors', 1);
   ini_set('display_startup_errors', 1);
@@ -11,12 +10,23 @@ require_once 'includes/connect.php';
 
 // Function to fetch articles based on position
 function fetch_articles_by_position($conn, $position) {
-    $sql = "SELECT title, content, category, image_url FROM articles WHERE position = :position ORDER BY publish_date DESC LIMIT 1";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':position', $position, PDO::PARAM_STR);
-    $stmt->execute();
-    return $stmt->fetch(PDO::FETCH_ASSOC);
+  $sql = "SELECT title, content, category, image_url FROM articles WHERE position = :position ORDER BY publish_date DESC LIMIT 1";
+  $stmt = $conn->prepare($sql);
+  $stmt->bindParam(':position', $position, PDO::PARAM_STR);
+  $stmt->execute();
+  $result = $stmt->fetch(PDO::FETCH_ASSOC);
+  if (!$result) {
+      // Return an empty array or a default structure to avoid errors
+      return [
+          'title' => 'Not Found',
+          'content' => 'No content available.',
+          'category' => 'None',
+          'image_url' => 'default.jpg' // Ensure you have a default image or handle this case in your HTML
+      ];
+  }
+  return $result;
 }
+
 
 $breaking_news = fetch_articles_by_position($conn, 'breaking');
 $local_updates = fetch_articles_by_position($conn, 'local_updates');
@@ -297,14 +307,15 @@ footer {
 <div class="container mt-5">
   <div class="row">
       <div class="col-md-4 mb-4">
-          <div class="card">
-              <img src="<?php echo htmlspecialchars($breaking_news['image_url']); ?>" class="card-img-top" alt="Breaking News Image">
-              <div class="card-body">
-                  <h5 class="card-title">Breaking News</h5>
-                  <p class="card-text"><?php echo htmlspecialchars($breaking_news['content']); ?></p>
-                  <a href="pages/breaking.html" class="btn btn-primary">Read More</a>
-              </div>
-          </div>
+        <div class="card">
+        <img src="<?php echo htmlspecialchars($breaking_news['image_url']); ?>" class="card-img-top" alt="Breaking News Image">
+        <div class="card-body">
+            <h5 class="card-title"><?php echo htmlspecialchars($breaking_news['title']); ?></h5>
+            <p class="card-text"><?php echo htmlspecialchars($breaking_news['content']); ?></p>
+            <a href="pages/breaking.html" class="btn btn-primary">Read More</a>
+        </div>
+      </div>
+
       </div>
       <div class="col-md-4 mb-4">
           <div class="card">
@@ -322,7 +333,7 @@ footer {
               <div class="card-body">
                   <h5 class="card-title">Sports Update</h5>
                   <p class="card-text"><?php echo htmlspecialchars($sports_news['content']); ?></p>
-                  <a href="pages/sports.html" class="btn btn-primary">Read More</a>
+                  <a href="pages/sports.php" class="btn btn-primary">Read More</a>
               </div>
           </div>
       </div>
@@ -356,7 +367,7 @@ footer {
                   </a>
               </li>
               <li class="foot-li">
-                  <a href="pages/sports.html">
+                  <a href="pages/sports.php">
                       <img src="./pics/sportcolorfulTEST-.png" alt="Sports Icon"> Sports News
                   </a>
               </li>

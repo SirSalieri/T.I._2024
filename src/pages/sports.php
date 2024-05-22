@@ -164,43 +164,39 @@ footer {
                 </ul>
             </div>
         </nav>
-    
-        <div class="in-container">
-            <h2 class="ar-titl">Sports News</h2>
-            <p class="s-text">Get the latest sports updates and news from around the world.</p>
+ 
+        <section>
+            <h2>Sports News</h2>
             <div class="articles">
                 <?php
-                $servername = "127.0.0.1";
-                $username = "root";
-                $password = "Admin123";
-                $dbname = "unity_pulse";
-        
-                $conn = new mysqli($servername, $username, $password, $dbname);
-        
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
-        
-                $sql = "SELECT * FROM articles WHERE category = 'sports'";
-                $result = $conn->query($sql);
-        
-                if ($result->num_rows > 0) {
-                    while ($article = $result->fetch_assoc()) {
-                        echo "<article class='news'>";
-                        echo "<img class='sports-pics' src='" . $article["image_url"] . "' alt='" . $article["image_alt"] . "'>";
-                        echo "<h3>" . $article["title"] . "</h3>";
-                        echo "<p>" . $article["content"] . "</p>";
-                        echo "<a class='link-more' href='article_detail.php?id=" . $article["id"] . "'>Read More</a>";
-                        echo "</article>";
+                require_once '../includes/connect.php'; 
+    
+                try {
+                    $stmt = $conn->prepare("SELECT * FROM articles WHERE category = 'sports'");
+                    $stmt->execute();
+    
+                    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+                    if ($result) {
+                        foreach ($result as $article) {
+                            echo "<div class='news'>";
+                            echo "<img src='" . htmlspecialchars($article['image_url']) . "' alt='" . htmlspecialchars($article['image_alt']) . "' style='width:100%;'>";
+                            echo "<h3>" . htmlspecialchars($article['title']) . "</h3>";
+                            echo "<p>" . htmlspecialchars($article['content']) . "</p>";
+                            echo "<a href='article_detail.php?id=" . htmlspecialchars($article['id']) . "'>Read More</a>";
+                            echo "</div>";
+                        }
+                    } else {
+                        echo "<p>No articles found.</p>";
                     }
-                } else {
-                    echo "No articles found";
+                } catch (PDOException $e) {
+                    echo "Connection failed: " . $e->getMessage();
                 }
-                $conn->close();
                 ?>
             </div>
-        </div>
-        
+        </section>
+    
+     
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -232,7 +228,7 @@ footer {
                       </a>
                   </li>
                   <li class="foot-li">
-                      <a href="sports.html">
+                      <a href="sports.php">
                           <img src="./pics/sportcolorfulTEST-.png" alt="Sports Icon"> Sports News
                       </a>
                   </li>

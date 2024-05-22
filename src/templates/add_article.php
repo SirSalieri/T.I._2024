@@ -8,15 +8,16 @@ $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Sanitize and prepare inputs
     $title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
-    $content = $_POST['content']; // CKEditor content does not need FILTER_SANITIZE_STRING
+    $content = $_POST['content']; // Assuming CKEditor's output is safe
     $author = filter_var($_POST['author'] ?? 'Anonymous', FILTER_SANITIZE_STRING); // Default to 'Anonymous' if not provided
     $category = filter_var($_POST['category'] ?? 'Uncategorized', FILTER_SANITIZE_STRING); // Default to 'Uncategorized' if not provided
     $image_url = filter_var($_POST['image_url'] ?? '', FILTER_SANITIZE_URL); // Default to empty string if not provided
     $position = filter_var($_POST['position'] ?? 'general', FILTER_SANITIZE_STRING); // Default to 'general' if not provided
+    $publish_date = $_POST['publish_date'] ?? date('Y-m-d'); // Use current date as default
 
     // Prepare and execute the insert statement
-    $insert_stmt = $conn->prepare("INSERT INTO articles (title, content, author, category, image_url, position) VALUES (?, ?, ?, ?, ?, ?)");
-    $success = $insert_stmt->execute([$title, $content, $author, $category, $image_url, $position]);
+    $insert_stmt = $conn->prepare("INSERT INTO articles (title, content, author, category, image_url, position, publish_date) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $success = $insert_stmt->execute([$title, $content, $author, $category, $image_url, $position, $publish_date]);
 
     if ($success) {
         $message = "New article added successfully.";
@@ -25,9 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Display operation message if there is one
 if ($message) {
-    echo "<p>$message</p>";
+    echo "<div class='alert alert-info'>$message</div>";
 }
 ?>
 
@@ -167,13 +167,13 @@ if ($message) {
 
     <div class="container">
         <h2>Add New Article</h2>
-        <form id="add-article-form" action="add_article.php" method="post">
+        <form id="add-article-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <input type="text" name="title" class="form-control" placeholder="Title" required>
             <textarea name="content" class="form-control" placeholder="Content" required rows="5"></textarea>
             <input type="text" name="author" class="form-control" placeholder="Author">
             <input type="text" name="category" class="form-control" placeholder="Category">
             <input type="text" name="image_url" class="form-control" placeholder="Image URL">
-            <input type="date" name="publish_date" class="form-control" placeholder="Publish Date" required>
+            <input type="date" name="publish_date" class="form-control" required>
             <button type="submit" class="btn btn-primary">Add Article</button>
             <button type="button" class="btn btn-secondary" onclick="submitPreview()">Preview</button>
         </form>

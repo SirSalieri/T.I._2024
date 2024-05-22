@@ -24,7 +24,7 @@ This repository contains code for:
    - calMAP.html [main calendar page; with calendar map with live tracking of the time],
    - calEVENTS.html [calendar-oriented element for making and remembering the events user makes on this page; ALSO WAS SUPPOSED to work, but due to lack of the time, does not have finished backend],
    - contact.html [includes simple form for inputting contact info of the user and redirects him to the default mail-interface for further communication],
-   - sports.html [for loking into sports articles],
+   - sports.php [for loking into sports articles],
    - weather.html [for weather overview]
 
   Every of these have their own role in the service of this page. They are 'here or there' incomplete, unfunctional or have bare frontend elements.

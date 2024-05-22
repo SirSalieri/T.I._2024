@@ -194,7 +194,7 @@ footer {
                       </a>
                   </li>
                   <li class="foot-li">
-                      <a href="../pages/sports.html">
+                      <a href="../pages/sports.php">
                           <img src="../pics/sportcolorfulTEST-.png" alt="Sports Icon"> Sports News
                       </a>
                   </li>
