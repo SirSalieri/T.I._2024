@@ -136,6 +136,7 @@
             return $stmt->execute();
         }
 
+
         // Check for actions: edit or delete
         if (isset($_GET['action']) && $_GET['action'] === 'edit' && isset($_GET['id'])) {
             $article_id = $_GET['id'];
@@ -150,17 +151,15 @@
                 $category = $_POST['category'];
                 $image_url = $_POST['image_url'];
                 $position = $_POST['position'];
-                $publish_date = $_POST['publish_date'];
 
                 // Update the article in the database
-                $sql = "UPDATE articles SET title = :title, content = :content, category = :category, image_url = :image_url, position = :position, publish_date = :publish_date WHERE id = :id";
+                $sql = "UPDATE articles SET title = :title, content = :content, category = :category, image_url = :image_url, position = :position WHERE id = :id";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam(':title', $title);
                 $stmt->bindParam(':content', $content);
                 $stmt->bindParam(':category', $category);
                 $stmt->bindParam(':image_url', $image_url);
                 $stmt->bindParam(':position', $position);
-                $stmt->bindParam(':publish_date', $publish_date);
                 $stmt->bindParam(':id', $article_id, PDO::PARAM_INT);
 
                 if ($stmt->execute()) {
@@ -171,15 +170,16 @@
             }
         ?>
 
+
 <div class="container mt-3">
-    <a href="edit_article.php" style="text-decoration: none;">&larr; Back to View Available articles</a>
-</div>
+        <a href="edit_article.php" style="text-decoration: none;">&larr; Back to View Available articles</a>
+    </div>
+
 
 <h2 class="mb-4">Edit Article</h2>
     <form id="edit-article-form" action="edit_article.php?action=edit&id=<?php echo $article_id; ?>" method="post">
         <input type="hidden" name="article_id" value="<?php echo $article_id; ?>">
-        <input type="hidden" name="publish_date" value="<?php echo htmlspecialchars($article_data['publish_date']); ?>">
-
+        
         <div class="form-group">
             <label for="title">Title:</label>
             <input type="text" class="form-control" id="title" name="title" value="<?php echo htmlspecialchars($article_data['title']); ?>" required>
@@ -214,14 +214,14 @@
         <button type="submit" class="btn btn-primary">Update</button>
         <button type="button" class="btn btn-secondary" onclick="submitPreview()">Preview</button>
     </form>
-    <form>
-        <form id="preview-form" action="preview.php" method="post" target="_blank">
+    
+    <form id="preview-form" action="preview.php" method="post" target="_blank">
         <input type="hidden" name="title" id="preview-title">
         <input type="hidden" name="content" id="preview-content">
         <input type="hidden" name="category" id="preview-category">
         <input type="hidden" name="image_url" id="preview-image-url">
         <input type="hidden" name="position" id="preview-position">
-        <input type="hidden" name="publish_date" id="preview-publish-date" value="<?php echo $article_data['publish_date']; ?>">
+        <input type="hidden" name="publish_date" id="publish_date">
     </form>
 
     <script>
@@ -231,16 +231,12 @@
         document.getElementById('preview-category').value = document.getElementById('category').value;
         document.getElementById('preview-image-url').value = document.getElementById('image_url').value;
         document.getElementById('preview-position').value = document.getElementById('position').value;
-        document.getElementById('preview-publish-date').value = document.getElementById('publish_date').value;
         document.getElementById('preview-form').submit();
     }
 
-        document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
         ClassicEditor
             .create(document.querySelector('#content'), {
-                ckfinder: {
-                    uploadUrl: '../upload_image.php?command=QuickUpload&type=Files&responseType=json'
-                },
                 toolbar: {
                     items: [
                         'heading', '|',
@@ -257,14 +253,19 @@
                         'imageTextAlternative', 'imageStyle:full', 'imageStyle:side'
                     ]
                 },
-                table: {
-                    contentToolbar: [
-                        'tableColumn', 'tableRow', 'mergeTableCells'
-                    ]
-                },
-                mediaEmbed: {
-                    previewsInData: true
+                simpleUpload: {
+                    // The URL that the images are uploaded to.
+                    uploadUrl: 'path_to_your_image_upload_handler',
+
+                    // Headers sent along with the XMLHttpRequest to the upload server.
+                    headers: {
+                        'X-CSRF-TOKEN': 'CSRF-Token',
+                        Authorization: 'Bearer <JSON Web Token>'
+                    }
                 }
+            })
+            .then(editor => {
+                console.log(editor);
             })
             .catch(error => {
                 console.error(error);

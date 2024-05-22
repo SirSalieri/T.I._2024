@@ -83,7 +83,7 @@
     <div class="container mt-5">
         <h2 class="mb-4"><?php echo htmlspecialchars($_POST['title']); ?></h2>
         <p><strong>Category:</strong> <?php echo htmlspecialchars($_POST['category']); ?></p>
-        <p><strong>Publish Date:</strong> <?php echo htmlspecialchars($_POST['publish_date']); ?></p>
+        <p><strong>Publish Date:</strong> <?php echo htmlspecialchars($_POST['publish_date'] ?? ''); ?></p>
         <img src="<?php echo htmlspecialchars($_POST['image_url']); ?>" alt="Article Image" style="max-width: 100%;">
         <div class="content">
             <?php echo $_POST['content']; ?>
