@@ -166,7 +166,7 @@ footer {
           </div>
       </div>
     <nav>
-        <a href="../index.html"> Home </a>
+        <a href="../index.php"> Home </a>
         <a href="../pages/about.php">About us</a>
         <a href="../pages/weather.html">Weather information</a>
         <a href="../pages/calMAP.html">Calendar</a>

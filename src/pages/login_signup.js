@@ -39,7 +39,7 @@
         .then(data => {
             if (data.success) {
                 // Redirect to a new page upon successful login
-                window.location.href = 'index.html';
+                window.location.href = 'index.php';
             } else {
                 showError(data.message); 
             }

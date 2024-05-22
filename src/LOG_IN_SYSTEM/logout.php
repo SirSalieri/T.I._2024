@@ -8,6 +8,6 @@ session_destroy();
 session_start();
 $_SESSION['logout_message'] = "Du har logget ut!";
 
-header('Location: ../index.html');
+header('Location: ../index.php');
 exit;
 ?>

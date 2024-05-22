@@ -1,4 +1,4 @@
-Privacy Policy of 127.0.0.1:5501/index.html
+Privacy Policy of 127.0.0.1:5501/index.php
 This Application collects some Personal Data from its Users.
 
 

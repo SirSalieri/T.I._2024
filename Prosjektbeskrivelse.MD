@@ -16,7 +16,7 @@ Newsfeed is supposed to be parted in three:
   
 This repository contains code for:
 
-1) Mainpage - index.html;
+1) Mainpage - index.php;
 2) all website's pages:
 
    - about.html [for describing the NordPublica - their services and history],
