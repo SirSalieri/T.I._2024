@@ -151,7 +151,11 @@ footer {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
+<<<<<<< HEAD
                     <a class="nav-link" href="../index.php">Home</a>
+=======
+                    <a class="nav-link" href="index.php">Home</a>
+>>>>>>> 8cf7344 (Test commiting)
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="calMAP.html">Calendar</a>
