@@ -1,213 +1,67 @@
-SIGN UP:
+Sure, I'll help you understand the functionality of the PDO system, how `.env` files are used (commonly managed with libraries like `dotenv`), and how to set up your website on a server. This should give you a good foundation for discussing your project during the presentation.
 
-        <div class="registration-container" style="display: none;">
-            <h1 class="lgin-logo">NordPublica</h1>
-            <h2 class="lgin-subtitles">Sign up at NordPublica</h2>
-            <form id="registration-form" method="POST" action="register.php">
-                <label for="register-name">Your name</label>
-                <input type="text" id="register-name" name="register-name" placeholder="Enter your name">
-        
-                <label for="register-form">Your surname:</label>
-                <input type="text" id="register-form" name="register-form" placeholder="Enter your surname">
-        
-                <label for="register-username">Your new username:</label>
-                <input type="text" id="register-username" name="register-username" placeholder="Enter your new username">
-        
-                <label for="register-email">Your email address:</label>
-                <input type="email" id="register-email" name="register-email" placeholder="Enter your email">
-        
-                <label for="register-password">Create a password:</label>
-                <input type="password" id="register-password" name="register-password" placeholder="Password">
-        
-                <label for="repeat-password">Repeat your password:</label>
-                <input type="password" id="repeat-password" name="repeat-password" placeholder="Repeat Password">
-        
-                <button type="submit" id="register-button">SIGN UP</button>
-            </form>
-        </div>
+### PDO (PHP Data Objects)
 
+**PDO** is a database access layer in PHP that provides a uniform method of accessing multiple databases. It doesn't provide a database abstraction but offers a consistent interface for working with different database systems.
 
+#### Benefits of PDO:
+1. **Security**: PDO provides prepared statements which help in preventing SQL injection attacks.
+2. **Usability**: You can use the same PHP code to interact with different types of databases such as MySQL, PostgreSQL, and SQLite.
+3. **Flexibility**: PDO supports advanced features like transactions, allowing you to commit or rollback changes.
+4. **Error Handling**: It can handle errors more effectively using exceptions.
 
-
-log in:
-
-
-
-
-        <div class="login-container">
-            <h1 class="lgin-logo">NordPublica</h1>
-            <h2 class="lgin-subtitles">Log in / Sign up to your profile at NordPublica</h2>
-            <form id="login-form" method="POST" action="login.php">
-                <label for="email">Log in with your email or username:</label>
-                <input type="text" id="email" name="email" required placeholder="Enter your email or username">
-                <label for="password" >Enter your password:</label>
-                <input type="password" placeholder="Password" id="password" name="password" required>
-                <button type="submit">LOG IN</button>
-            </form>
-            <p>Not registered yet? <a href="#" id="register-link">Register here</a></p>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        LABELS STYLE:
-
-    
-
-.total-setup {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    height: auto;
-    margin: 20px;
+#### Basic Usage:
+Here’s how you typically connect to a database using PDO:
+```php
+try {
+    $pdo = new PDO('mysql:host=localhost;dbname=testdb', 'username', 'password');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Could not connect to the database: " . $e->getMessage());
 }
+```
+In this code, you attempt to connect to a MySQL database and set the error mode to exception mode. This means that if an error occurs, PDO will throw an exception that you can catch and handle.
 
-.login-container {
-    min-width: 20vw;
-    min-height: 30vh;
-    background-color: #f5f5f5; 
-    border: 1px solid #ccc; 
-    border-radius: 10px;
-    padding: 20px; 
-    margin: 0 auto;
-    text-align: center;
-    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.3); 
-}
+### Dotenv
 
-.lgin-subtitles {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 20px;
-    margin-bottom: 20px;
-}
+**Dotenv** is a zero-dependency module that loads environment variables from a `.env` file into `getenv()`, `$_ENV`, and `$_SERVER` automagically. This is used to manage configuration and secret data (like API keys and credentials) that should not be hardcoded into your application's source code.
 
-.lgin-logo {
-    padding: 5px;  
-    font-family: 'Orbitron', sans-serif;
-    text-align: center;
-    border-radius: 5px;
-    border-bottom: 2px solid black;
-    border-top: 2px solid black;
-}
+#### Benefits of using Dotenv:
+1. **Security**: Keeps sensitive credentials out of your source code.
+2. **Flexibility**: Easy to change settings between development, testing, and production environments without changing the code.
+3. **Simplicity**: Streamlines configuration management, especially useful in large applications and when using CI/CD pipelines.
 
-.login-container label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-size: 1.3rem;
-    font-family: 'Open Sans', sans-serif;
-}
+#### Example Usage:
+1. You create a `.env` file in your project root:
+   ```
+   DB_HOST=localhost
+   DB_USER=root
+   DB_PASS=s3cret
+   ```
+2. Load these variables in PHP:
+   ```php
+   require_once 'vendor/autoload.php';
+   $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+   $dotenv->load();
 
-.login-container input {
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    text-align: center;
-    font-family: 'Open Sans', sans-serif;
-    font-style: italic;
-}
+   $hostname = $_ENV['DB_HOST'];
+   $username = $_ENV['DB_USER'];
+   $password = $_ENV['DB_PASS'];
+   ```
 
-.login-container button {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Orbitron', sans-serif;
-}
+### Setting Up the Website on a Server
 
-.login-container button:hover {
-    background-color: #0056b3;
-}
+To deploy your website on a server, you’d typically follow these steps:
 
-.login-container a {
-    color: #007BFF;
-    text-decoration: none;
-    font-family: 'Orbitron', sans-serif;
-}
-.login-container a:hover {
-    text-decoration: underline;
-}
+1. **Choose a hosting provider**: Decide between shared hosting, VPS, or a dedicated server based on your project needs.
+2. **Upload your files**: Use FTP/SFTP to upload your PHP files, assets, and `.env` file to your server. Make sure the `.env` file is not accessible from the web.
+3. **Set up the database**: Import your database to the server's MySQL instance. Adjust the `.env` or connection settings to match your server’s database credentials.
+4. **Configure the web server**: If you're using Apache, ensure your `.htaccess` files are set up to direct traffic to your `index.php` file and to secure directories as needed.
+5. **Test the deployment**: Visit your domain and test all functionalities to ensure everything works as expected.
 
-.registration-container {
-    background-color: #f9f9f9;
-    min-width: 20vw;
-    min-height: 30vh;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    position: relative;
-    display: none;
-}
+#### Extra Configurations:
+- **SSL Certificate**: Set up an SSL certificate to secure your website using HTTPS.
+- **Email Server**: Configure if your application needs to send emails.
+- **Cron Jobs**: Set up if you need scheduled tasks.
 
-.registration-container label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-size: 1.2rem;
-    text-align: center;
-}
-
-.registration-container input {
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    text-align: center;
-    font-style: italic;
-}
-.registration-container a {
-    color: #007BFF;
-    text-decoration: none;
-    font-family: 'Orbitron', sans-serif;
-}
-
-.registration-container a:hover {
-    text-decoration: underline;
-}
-
-
-.registration-container button {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Orbitron', sans-serif;
-}
-
-
-.registration-container button:hover {
-    background-color: #0056b3;
-
-}
-
-.registration-container p {
-    margin-top: 10px;
-}
-
-.registration-container #register-link {
-    color: #007BFF;
-    text-decoration: none;
-}
-
-.registration-container #register-link:hover {
-    text-decoration: underline;
-}
+Preparing your presentation around these core aspects can help your audience understand the technical sophistication and operational setup of your project, showcasing your capability in web development and deployment.

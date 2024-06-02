@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . '../includes/connect.php';
+require_once __DIR__ . '../src/includes/connect.php';
 
 // if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 //     header("Location: unauthorized_page.html");
@@ -26,7 +26,6 @@ if (isset($_GET['id'])) {
     exit(); 
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="no">
