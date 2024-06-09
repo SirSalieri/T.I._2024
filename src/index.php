@@ -1,17 +1,12 @@
 <?php
-<<<<<<< HEAD
 if (isset($_SERVER['HTTP_X_FORWARDED_URL']) && strpos($_SERVER['HTTP_X_FORWARDED_URL'], '.w3spaces-preview.com/') !== false) {
   ini_set('display_errors', 1);
   ini_set('display_startup_errors', 1);
   error_reporting(E_ALL);
 }
-=======
-//ini_set('display_errors', 1);
-//error_reporting(E_ALL);
->>>>>>> 8cf7344 (Test commiting)
 
 // Include the database connection file
-require_once 'includes/connect.php';
+require_once __DIR__ . '/includes/connect.php';
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -23,7 +18,6 @@ try {
 }
 
 function fetch_articles_by_position($conn, $position) {
-<<<<<<< HEAD
   $sql = "SELECT title, content, category, image_url FROM articles WHERE position = :position ORDER BY publish_date DESC LIMIT 1";
   $stmt = $conn->prepare($sql);
   $stmt->bindParam(':position', $position, PDO::PARAM_STR);
@@ -39,21 +33,6 @@ function fetch_articles_by_position($conn, $position) {
       ];
   }
   return $result;
-=======
-    try {
-        $sql = "SELECT title, content, category, image_url FROM articles WHERE position = :position ORDER BY publish_date DESC LIMIT 1";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':position', $position, PDO::PARAM_STR);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        if (!$result) {
-            return []; // Return an empty array if no results
-        }
-        return $result;
-    } catch (PDOException $e) {
-        echo "Error fetching article: " . $e->getMessage();
-    }
->>>>>>> 8cf7344 (Test commiting)
 }
 
 
