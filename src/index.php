@@ -1,15 +1,14 @@
 <?php
-if (isset($_SERVER['HTTP_X_FORWARDED_URL']) && strpos($_SERVER['HTTP_X_FORWARDED_URL'], '.w3spaces-preview.com/') !== false) {
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 1);
-  error_reporting(E_ALL);
-}
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-// Include the database connection file
-require_once __DIR__ . '/includes/connect.php';
+// Correct the require statement to use proper concatenation
+require __DIR__ . '/terminoppgave_innlevering/vendor/autoload.php';
+require __DIR__ . '/terminoppgave_innlevering/src/includes/connect.php';
 
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connected successfully";
 } catch (PDOException $e) {
@@ -18,22 +17,25 @@ try {
 }
 
 function fetch_articles_by_position($conn, $position) {
-  $sql = "SELECT title, content, category, image_url FROM articles WHERE position = :position ORDER BY publish_date DESC LIMIT 1";
-  $stmt = $conn->prepare($sql);
-  $stmt->bindParam(':position', $position, PDO::PARAM_STR);
-  $stmt->execute();
-  $result = $stmt->fetch(PDO::FETCH_ASSOC);
-  if (!$result) {
-      // Return an empty array or a default structure to avoid errors
-      return [
-          'title' => 'Not Found',
-          'content' => 'No content available.',
-          'category' => 'None',
-          'image_url' => 'default.jpg' // Ensure you have a default image or handle this case in your HTML
-      ];
-  }
-  return $result;
+    try {
+        $sql = "SELECT title, content, category, image_url FROM articles WHERE position = :position ORDER BY publish_date DESC LIMIT 1";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':position', $position, PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (!$result) {
+            return [];
+        }
+        return $result;
+    } catch (PDOException $e) {
+        echo "Error fetching article: " . $e->getMessage();
+    }
 }
+
+$breaking_news = fetch_articles_by_position($conn, 'breaking');
+$local_updates = fetch_articles_by_position($conn, 'local_updates');
+$sports_news = fetch_articles_by_position($conn, 'sports_news');
+?>
 
 
 $breaking_news = fetch_articles_by_position($conn, 'breaking');

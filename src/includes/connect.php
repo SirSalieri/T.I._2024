@@ -1,5 +1,5 @@
 <?php
-$autoloadPath = __DIR__ . '\..\..\vendor\autoload.php';
+$autoloadPath = __DIR__ . '/../../vendor/autoload.php';
 
 if (file_exists($autoloadPath)) {
     require_once $autoloadPath;
@@ -7,16 +7,22 @@ if (file_exists($autoloadPath)) {
     die("The required loader is missing. Please run 'composer install'.");
 }
 
-
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../../support');
 $dotenv->load();
 
-$host = $_ENV['DB_HOST'];
-$dbname = $_ENV['DB_NAME'];
-$username = $_ENV['DB_USERNAME'];
-$password = $_ENV['DB_PASSWORD'];
+$host = $_ENV['DB_HOST'] ?? null;
+$dbname = $_ENV['DB_NAME'] ?? null;
+$username = $_ENV['DB_USERNAME'] ?? null;
+$password = $_ENV['DB_PASSWORD'] ?? null;
+
+// Print environment variables to debug
+echo "Host: $host, Database: $dbname, Username: $username";
+
+if (!$host || !$dbname || !$username || !$password) {
+    die("One or more environment variables are missing.");
+}
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -27,4 +33,3 @@ try {
     die("Connection failed. Please contact the administrator.");
 }
 ?>
-
