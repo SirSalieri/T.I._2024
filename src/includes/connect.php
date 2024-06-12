@@ -7,6 +7,7 @@ if (file_exists($autoloadPath)) {
     die("The required loader is missing. Please run 'composer install'.");
 }
 
+$username = $_ENV['DB_USERNAME'] ?? null;
 use Dotenv\Dotenv;
 
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../../support');
@@ -14,7 +15,6 @@ $dotenv->load();
 
 $host = $_ENV['DB_HOST'] ?? null;
 $dbname = $_ENV['DB_NAME'] ?? null;
-$username = $_ENV['DB_USERNAME'] ?? null;
 $password = $_ENV['DB_PASSWORD'] ?? null;
 
 // Print environment variables to debug
