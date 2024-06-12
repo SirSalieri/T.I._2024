@@ -1,21 +1,17 @@
 <?php
-$autoloadPath = __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
-if (file_exists($autoloadPath)) {
-    require_once $autoloadPath;
-} else {
-    die("The required loader is missing. Please run 'composer install'.");
-}
-
-$username = $_ENV['DB_USERNAME'] ?? null;
 use Dotenv\Dotenv;
 
+// Load environment variables from the .env file
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../../support');
 $dotenv->load();
 
-$host = $_ENV['DB_HOST'] ?? null;
-$dbname = $_ENV['DB_NAME'] ?? null;
-$password = $_ENV['DB_PASSWORD'] ?? null;
+// Fetch environment variables
+$host = getenv('DB_HOST');
+$dbname = getenv('DB_NAME');
+$username = getenv('DB_USERNAME');
+$password = getenv('DB_PASSWORD');
 
 // Print environment variables to debug
 echo "Host: $host, Database: $dbname, Username: $username";
