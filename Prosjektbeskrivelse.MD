@@ -4,7 +4,7 @@ MIKE'S TERMINOPPGAVE:
 
 ## Description
 
-Unity_Pulse is supposed to be online portal for Newsfeed, weather checking, calendar overview and planning events via user's default calendar-interface.
+NordPublica is supposed to be online portal for Newsfeed, weather checking, calendar overview and planning events via user's default calendar-interface.
 Newsfeed is supposed to be parted in three:
 - BreakingNews,
 - Local Newsfeed &
