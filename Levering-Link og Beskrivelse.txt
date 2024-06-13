@@ -1,6 +1,6 @@
 Her er lenken til mit Terminoppgave repository på Github;
 
-https://github.com/SirSalieri/terminoppgave_innlevering
+https://github.com/SirSalieri/T.I._2024
 
 I README.MD finnes beskrivelsen om med det som var målet mitt i denne Terminoppgaven. Om det som var plannen på istad, og noe, av og til relevante informasjon om det jeg brukte. I hvertfall jeg hadde lyst til å gjøre ting på denne måten som står i dokumentet. 
 
