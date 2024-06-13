@@ -1,0 +1,11 @@
+{
+    "name": "root/ti_2024",
+    "description": "Temporary installation for terminoppgave",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Root"
+        }
+    ],
+    "require": {}
+}
