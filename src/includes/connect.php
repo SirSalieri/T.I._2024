@@ -1,7 +1,13 @@
 <?php
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../../src/vendor/autoload.php'; // Adjusted the path to match your structure
 
 use Dotenv\Dotenv;
+
+// Check if the file exists
+$envFilePath = __DIR__ . '/../../support/.env';
+if (!file_exists($envFilePath)) {
+    die(".env file not found at: $envFilePath");
+}
 
 // Load environment variables from the .env file
 $dotenv = Dotenv::createImmutable(__DIR__ . '/../../support');
