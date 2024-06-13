@@ -10,13 +10,13 @@ $dotenv->load();
 // Fetch environment variables
 $host = getenv('DB_HOST');
 $dbname = getenv('DB_NAME');
-$username = getenv('DB_USERNAME');
-$password = getenv('DB_PASSWORD');
+$username = getenv('DB_USER');
+$password = getenv('DB_PASS');
 
 // Print environment variables to debug
-echo "Host: $host, Database: $dbname, Username: $username";
+echo "Host: $host, Database: $dbname, Username: $username, Password: $password<br>";
 
-if (!$host || !$dbname || !$username || !$password) {
+if (!$host || !$dbname || !$username) {
     die("One or more environment variables are missing.");
 }
 
