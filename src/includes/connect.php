@@ -26,9 +26,15 @@ if (!$host || !$dbname || !$username || !$password) {
     die("One or more environment variables are missing.");
 }
 
+$dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
+
 try {
-    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn = new PDO($dsn, $username, $password, $options);
     echo "Connected to the MySQL database successfully";
 } catch (PDOException $e) {
     error_log("Connection failed: " . $e->getMessage());

@@ -6,6 +6,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = $_POST['login'];
     $password = $_POST['password'];
 
+    // Debugging statements
+    error_log("Login attempt with: $login");
+
     if (filter_var($login, FILTER_VALIDATE_EMAIL)) {
         $stmt = $conn->prepare("SELECT * FROM users WHERE email = :login");
     } else {
@@ -15,6 +18,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindValue(':login', $login);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Debugging statements
+    if ($user) {
+        error_log("User found: " . print_r($user, true));
+    } else {
+        error_log("No user found with login: $login");
+    }
 
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];

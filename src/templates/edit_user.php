@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once __DIR__ . '/../includes/connect.php';
-// require_once __DIR__ . '/../includes/authentication.php'; 
 
 $message = '';
 $userData = null;
@@ -11,12 +10,14 @@ if (isset($_GET['id'])) {
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $name = $_POST['name'];
+        $username = $_POST['username'];
         $role = $_POST['role'];
 
-        $stmt = $conn->prepare("UPDATE users SET name = ?, role = ? WHERE id = ?");
+        $stmt = $conn->prepare("UPDATE users SET name = ?, username = ?, role = ? WHERE id = ?");
         $stmt->bindParam(1, $name);
-        $stmt->bindParam(2, $role);
-        $stmt->bindParam(3, $userId);
+        $stmt->bindParam(2, $username);
+        $stmt->bindParam(3, $role);
+        $stmt->bindParam(4, $userId);
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
@@ -131,10 +132,14 @@ if (isset($_GET['id'])) {
             </div>
         <?php endif; ?>
 
-        <form action="rediger_bruker.php?id=<?php echo htmlspecialchars($userId); ?>" method="post">
+        <form action="edit_user.php?id=<?php echo htmlspecialchars($userId); ?>" method="post">
             <div class="form-group">
                 <label for="name">Navn</label>
                 <input type="text" class="form-control" id="name" name="name" value="<?php echo htmlspecialchars($userData['name'] ?? ''); ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Brukernavn</label>
+                <input type="text" class="form-control" id="username" name="username" value="<?php echo htmlspecialchars($userData['username'] ?? ''); ?>" required>
             </div>
             <div class="form-group">
                 <label for="role">Rolle</label>
