@@ -47,7 +47,7 @@ The website's final purpose could be parted in two possible usages:
     - Checking calendar;
     - Logging in and registering as a public user &
     - Contacting Administration.
-    - 
+    - potentially more in future :)
 
 ## License
 
