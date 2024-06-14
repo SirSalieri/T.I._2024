@@ -142,7 +142,7 @@ To get the "NordPublica" system up and running on your Apache server, follow the
 
 Once in the appropriate directory, use the following command to clone the repository:
 
-$ git clone https://github.com/SirSalieri/T.I._2024
+$ git clone https://github.com/SirSalieri/T.I._2024 (with ~ 'sudo' in addition in the case of installation on ubuntu machine)
 
 This will create a NordPublica directory inside your web server's root directory. If you're using a virtual host or an alias, ensure that the NordPublica directory is within the path specified for the virtual host or alias.
 
@@ -159,11 +159,11 @@ After you have cloned the repository to your server/local environment on your de
 
 2. First component you have to install is Composer. You install Composer by running this command in terminal:
 
-$ composer install
+$ composer install (add 'sudo' if installing on ubuntu)
 
 3. After installing Composer, you have to make sure you have imported a database to your project. You do this in several steps:
 1.1 First, log in to the MySQL/MariaDB console by typing this in your terminal:
-   $ sudo mysql -u root -p
+   $ mysql -u root -p (add 'sudo' if installing on ubuntu)
 1.2 Afterwards, create a new database, and name it 'nordpublica!!:
    CREATE DATABASE nordpublica;
    EXIT;
