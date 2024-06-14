@@ -1,20 +1,31 @@
 <?php
-require_once __DIR__ . '/../../vendor/autoload.php';
-require_once '../includes/connect.php';
+// Enable detailed error reporting
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../includes/connect.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../support');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../support');
 $dotenv->load();
 
-$servername = $_ENV['DB_HOST'];
-$username = $_ENV['DB_USERNAME'];
-$password = $_ENV['DB_PASSWORD'];
-$dbname = $_ENV['DB_NAME'];
+// Correct environment variable names
+$servername = $_ENV['DB_HOST'] ?? null;
+$db_username = $_ENV['DB_USER'] ?? null;
+$db_password = $_ENV['DB_PASS'] ?? null;
+$dbname = $_ENV['DB_NAME'] ?? null;
+
+// Check if all environment variables are loaded
+if (!$servername || !$db_username || !$db_password || !$dbname) {
+    die("One or more environment variables are missing.");
+}
 
 // Establish a database connection using PDO
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $db_username, $db_password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected to the MySQL database successfully<br>";
 } catch (PDOException $e) {
     error_log("Connection failed: " . $e->getMessage());
     die("Connection failed: " . $e->getMessage());
@@ -22,11 +33,11 @@ try {
 
 // Check for POST request
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST['register-name'];
-    $surname = $_POST['register-surname'];
-    $username = $_POST['register-username'];
-    $email = $_POST['register-email'];
-    $password = $_POST['register-password']; // Securely hash this password
+    $name = $_POST['name'];
+    $surname = $_POST['surname'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password']; // Securely hash this password
 
     // Hash password using a strong hashing mechanism
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -55,7 +66,6 @@ $conn = null;
 </head>
 
 <style>
-
 header {
   width: 100%;
   color: white;
@@ -108,7 +118,6 @@ nav a:hover {
 footer {
   background-color: #333;
   color: #fff;
-  /* position: fixed; */
   bottom: 0;
   left: 0; 
   width: 100%;
@@ -180,8 +189,7 @@ footer {
             <div class="card shadow">
                 <div class="card-body">
                     <h3 class="card-title text-center mb-4">Registrer Deg</h3>
-                    <form action="handle_register.php" method="post">
-                    <form action="handle_register.php" method="post">
+                    <form action="register.php" method="post">
                         <div class="form-group">
                             <label for="name">Navn</label>
                             <input type="text" class="form-control" id="name" name="name" required>
@@ -258,4 +266,3 @@ footer {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 </html>
-

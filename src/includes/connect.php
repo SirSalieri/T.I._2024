@@ -1,28 +1,28 @@
 <?php
-require_once __DIR__ . '/../../src/vendor/autoload.php'; // Adjusted the path to match your structure
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use Dotenv\Dotenv;
 
-// Check if the file exists
-$envFilePath = __DIR__ . '/../../support/.env';
+$envFilePath = __DIR__ . '/../support/.env';
 if (!file_exists($envFilePath)) {
     die(".env file not found at: $envFilePath");
 }
 
-// Load environment variables from the .env file
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../../support');
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../support');
 $dotenv->load();
 
-// Fetch environment variables
-$host = getenv('DB_HOST');
-$dbname = getenv('DB_NAME');
-$username = getenv('DB_USER');
-$password = getenv('DB_PASS');
+$host = $_ENV['DB_HOST'] ?? null;
+$dbname = $_ENV['DB_NAME'] ?? null;
+$username = $_ENV['DB_USER'] ?? null;
+$password = $_ENV['DB_PASS'] ?? null;
 
-// Print environment variables to debug
 echo "Host: $host, Database: $dbname, Username: $username, Password: $password<br>";
 
-if (!$host || !$dbname || !$username) {
+if (!$host || !$dbname || !$username || !$password) {
     die("One or more environment variables are missing.");
 }
 
@@ -32,6 +32,6 @@ try {
     echo "Connected to the MySQL database successfully";
 } catch (PDOException $e) {
     error_log("Connection failed: " . $e->getMessage());
-    die("Connection failed. Please contact the administrator.");
+    die("Connection failed: " . $e->getMessage());
 }
 ?>
