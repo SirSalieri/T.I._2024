@@ -20,11 +20,10 @@
 
  ### Ting jeg trenger å lære meg:
 
-•	Jeg må lære å teste å hoste websiden min;
-•	Jeg må lære meg hvordan PHP fungerer;
+•	Jeg må lære hva betyr det å hoste websiden min;
 •	Jeg må lære hvordan MySQL (Workbench platform & databaser – tavler – kolumner system) fungerer;
 •	Jeg må lære noe om XAMPP & Apache;
 •	Jeg må lære meg noe enkelte men kreative style løsninger!
 •	Jeg må lære meg hvordan å tenke på brukerstøtte og ikke bare på systemets funksjonalitet!
-•	Også, jeg må lære hvordan å legge til eksisterende APIs, systemer og programmer som har tjenester jeg vil / kan ikke skape selv;
+•	Også, jeg må lære hvordan å legge til eksisterende APIs, systemer og programmer som har tjenester som jeg skal ikke skape selv;
 
