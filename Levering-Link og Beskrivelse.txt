@@ -1,9 +1,9 @@
-Her er lenken til mit Terminoppgave repository på Github;
+Her er lenken til mitt Årsoppgave repository på Github;
 
 https://github.com/SirSalieri/T.I._2024
 
-I README.MD finnes beskrivelsen om med det som var målet mitt i denne Terminoppgaven. Om det som var plannen på istad, og noe, av og til relevante informasjon om det jeg brukte. I hvertfall jeg hadde lyst til å gjøre ting på denne måten som står i dokumentet. 
+I README.MD finnes beskrivelsen om med det som var målet mitt i denne Årsoppgaven for 2023./'24. skoleåret! Der finnes det informasjon som var plannen på istad, og noen mer eller mindre relevante informasjon om det jeg brukte. I hvertfall jeg hadde lyst til å gjøre ting på denne måten som står i dokumentet. 
 
-Avhengig av leserens lystet leger jeg til PDF fil av den samme beskrivelsen. 
+Avhengig av leserens lystet. blir det tilgjengelig en PDF fil av den samme beskrivelsen. 
 
-Bortsatt fra denne Readme dokumentet finnes det også en .MD fil med en detaljerte prosjektbeskrivelsen om sider og alle andre ting som står i mit kode.
+Bortsatt fra denne Readme dokumentet finnes det også en .MD fil med en detaljerte prosjektbeskrivelsen om sider og alle andre ting som står i mine koder.
