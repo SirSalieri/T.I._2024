@@ -32,7 +32,7 @@ This repository contains code for:
 
 ## Installation
 
-[Provide instructions on how to install/setup your project]
+Installation tutorial will be provided lively, during the project's premiere-presentation!
 
 ## Usage
 
