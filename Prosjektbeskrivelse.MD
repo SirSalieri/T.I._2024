@@ -12,7 +12,8 @@ Newsfeed is supposed to be parted in three:
 
   The goal was basically offering some typical infoservices for public domain of users - those who wish to be updated with daily info. 
 
-  Due to lack of time, so many problems in the installation and, somewhat too bad and complicated conditions for project, the final product is quite imperfect and not fully done. Main Frontend is practicaly totally done, while backend-system is full of empty - unfinished documents.
+###TO BE QUITE HONEST
+  Due to lack of time, so many problems in the installation and, somewhat complicated conditions for project, the final product is quite imperfect and not fully done. Main Frontend is still kind of messy because of changes in the work-progress with backend, while backend-system itself is full of empty unfinished documents.
   
 This repository contains code for:
 
